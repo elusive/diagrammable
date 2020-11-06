@@ -1,13 +1,147 @@
+:root {
+	--nav-h:       6rem;
+	--top-offset:  6rem;
+	--sidebar-w:  30rem;
+	--sidebar-mid-w: 36rem;
+	--sidebar-large-w: 48rem;
+	--main-width: 80rem;
+	--side-nav:  3.2rem;
+	--side-page:   var(--side-nav);
+
+	/* easings */
+	--out-back:    cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@media screen and (min-width: 768px) {
+	:root {
+		--side-page:  14vw;
+		--top-offset: 10rem;
+		--side-nav: 4.8rem;
+	}
+}
+
+/*	theme vars */
+.theme-default {
+	--back:       	#ffffff;
+	--back-light: 	#f6fafd;
+	--back-api: 		#eff8ff;
+	--prime:      	#ff3e00;
+	--second:     	#676778;
+	--flash:      	#40b3ff;
+	--heading:	var(--second);
+	--text:      		#444;
+	--sidebar-text: rgba(255, 255, 255, .75);
+	--border-w:  		.3rem; /* border-width  */
+	--border-r:  		.4rem; /* border-radius */
+}
+
+@font-face {
+	font-family: 'Overpass';
+	font-style: normal;
+	font-weight: 300;
+	src:
+		local('Overpass Light '),
+		local('Overpass-Light'),
+		url('https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap');
+}
+
+@font-face {
+	font-family: 'Overpass';
+	font-style: normal;
+	font-weight: 600;
+	src:
+		local('Overpass Bold '),
+		local('Overpass-Bold'),
+		url('https://fonts.googleapis.com/css2?family=Overpass:wght@300;600&display=swap');
+}
+
+@font-face {
+	font-family: 'Fira Mono';
+	font-style: normal;
+	font-weight: 400;
+	src:
+		local('Fira Mono Regular '),
+		local('Fira Mono-Regular'),
+		url('https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap');
+}
+
+body {   
+  --font: 'Overpass', sans-serif;
+  --font-mono: 'Fira Mono', monospace;
+}
+
+
+/*	typography variables */
+.typo-default {
+	--code-fs: 1.3rem;
+	--h6:      1.4rem;
+	--h5:      1.6rem;
+	--h4:      1.8rem; /* default font-size */
+	--h3:      2.6rem;
+	--h2:        3rem;
+	--h1:      3.2rem;
+	--linemax:   42em; /* max line-length */
+	--lh:  		  1.5; /* base line-height */
+}
+
+/********************************************
+ * GLOBAL STYLES
+ *
+ */
+
+/*	typography ----------------------------- */
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+	font: 300 var(--h4)/var(--lh) var(--font);
+	background-color: var(--back);
+	color: var(--text);
+
+	/* default spacing of Overpass is a bit too airy */
+	/* letter-spacing: -.013em; */
+}
+
+h1, h2, h3, h4, h5, h6, blockquote {
+	position: relative;
+	margin: 0;
+	color: var(--heading);
+}
+
+/* h1, h2, h3, h4, h5, h6 { font-weight: 600 } */
+h6 { font-size: var(--h6) }
+h5 { font-size: var(--h5) }
+h4 { font-size: var(--h4) }
+h3 { font-size: var(--h3) }
+h2 { font-size: var(--h2) }
+h1 { font-size: var(--h1) }
+
+h1, h2 {
+	font-family: var(--font);
+	line-height: 1.25;
+}
+
+h3 { font-weight: 300 }
+
+p, ol, ul {
+	margin: 0 0 1em 0;
+}
+
+.b, b, strong { font-weight: 600 }
+
+tt, code, kbd, samp {
+	font: 400 var(--code-fs)/1.7 var(--font-mono);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	position: relative;
+	border-radius: .3em;
+	white-space: nowrap;
+	color: #444;
+	-webkit-font-smoothing: initial;
 }
+
+pre code {
+	top: 0;
+	white-space: inherit;
+	background-color: none;
+}
+
