@@ -1,10 +1,8 @@
 //import react from 'react';
 import styled from 'styled-components';
-import {motion} from 'framer-motion';
-
+import { motion } from 'framer-motion';
 
 const Select = (props) => {
-
     return (
         <SelectionCard>
             <CardTitle>Diagram Selector</CardTitle>
@@ -24,9 +22,13 @@ const CardTitle = styled.h4`
 
 const SelectionCard = styled(motion.div)`
     border: 1px solid var(--second);
-    padding: 3rem;
-    padding-top: 0;
-    width: 800vh;
+    margin: 12px;
+    padding: 0;
+    width: 800px;
     box-shadow: 8px 8px 4px grey;
-    animate: {{ scale: [1,3,1]}};
+    animate: {
+         {
+            scale: [1, 3, 1];
+        }
+    }
 `;
