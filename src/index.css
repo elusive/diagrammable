@@ -5,6 +5,7 @@
 	--sidebar-mid-w: 36rem;
 	--sidebar-large-w: 48rem;
 	--main-width: 80rem;
+    --margin: 3rem;
 	--side-nav:  3.2rem;
 	--side-page:   var(--side-nav);
 
@@ -24,10 +25,12 @@
 .theme-default {
 	--back:       	#ffffff;
 	--back-light: 	#f6fafd;
-	--back-api: 		#eff8ff;
-	--prime:      	#ff3e00;
+	--back-api: 	#eff8ff;
+	--prime:      	#0067ac;
+    --prime-dark:   #003f69;
 	--second:     	#676778;
-	--flash:      	#40b3ff;
+	--flash:      	#ff3e00;
+    --flash-dark:   #aa2900;
 	--heading:	var(--second);
 	--text:      		#444;
 	--sidebar-text: rgba(255, 255, 255, .75);
@@ -91,7 +94,7 @@ body {
 
 /*	typography ----------------------------- */
 body {
-    margin: 0;
+    margin: var(--margin);
 	font: 300 var(--h4)/var(--lh) var(--font);
 	background-color: var(--back);
 	color: var(--text);
