@@ -1,0 +1,58 @@
+flowchart for composition diagram:
+
+graph LR
+        subgraph row1 [Host Application]
+            row1a(Host Application) -->
+            row1b(Region Manager)-->
+            row1c(Shell <br/> MainWindow.xaml)
+        end
+
+        subgraph row2 [Prism Framework - Unity]
+            row2a(Module Manager)-->
+            row2b(Region Registry)-->
+            row2c(Composition Container)
+        end
+
+    %% Notice that no text in shape are added here instead that is appended further down
+    
+    %% Comments after double percent signs
+    
+
+     classDef purple fill:#bbf,stroke:#333,stroke-width:2px;
+     classDef blue fill:#479FEF,stroke:#333,stroke-width:2px;
+     class row1,row2 purple
+     class row1a,row1b,row1c,row2a,row2b,row2c blue
+           
+
+flowchart for MVVM pattern:
+
+
+
+graph LR
+        v1(<br/><br/><br/>View<br/><br/><br/><br/>)  
+        v2(<br/><br/>View<br/> Model<br/><br/><br/><br/>)
+        v3(<br/><br/><br/>Model<br/><br/><br/><br/>)
+        
+        v1<-- Data Binding -->v2
+        v1<-. Commands -.->v2
+        v1-. PropertyChanged<br/>Events .-v2
+        v2-. ModelChanged<br/>Events .-v3
+        v2-- Update -->v3
+        v3-- Read -->v2
+        
+        
+        
+        
+
+
+    %% Notice that no text in shape are added here instead that is appended further down
+    
+    %% Comments after double percent signs
+    
+
+     classDef purple fill:#bbf,stroke:#333,stroke-width:2px;
+     classDef blue fill:#479FEF,stroke:#333,stroke-width:2px;
+     class row1,row2 purple
+     class row1a,row1b,row1c,row2a,row2b,row2c blue
+
+
