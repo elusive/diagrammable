@@ -11,8 +11,8 @@ const Button = (props) => {
 export default Button;
 
 const AnimatedButton = styled(motion.button)`
-    padding: 12px 
-    initial: {{ opacity: 0, y: 50, scale: 0.3 }}
-    animate: {{ opacity: 1, y: 0, scale: 1 }}
-    border-radius: 8px; 
+    margin: 8px;
+    padding: 22px;
+    animate: {{ scale: 2 }};
+    border-radius: 12px; 
 `;

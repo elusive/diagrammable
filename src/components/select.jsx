@@ -21,7 +21,7 @@ export default Select;
 const CardTitle = styled.h4`
     margin: 0;
     padding: 8px;
-    background: var(--flash);
+    background: var(--second);
     color: var(--back);
 `;
 
@@ -31,4 +31,8 @@ const SelectionCard = styled(motion.div)`
     width: 1200px;
     box-shadow: 8px 8px 4px grey;
     animate: {{ scale: [1,1,2,2,3,2,1,1]}};
+    transition: { duration: 20 };
+    & > p {
+        margin: 8px 12px;
+    };
 `;

@@ -27,7 +27,11 @@ const MenuList = styled(motion.ul)`
 
 const MenuItem = styled(motion.li)`
     float: left;
-    &:hover { background-color: #111; }
+    animate: {{ scale: 1.4 }}
+    &:hover { 
+        background-color: #111; 
+        animate: { scale: 1.3 }
+    }
     & > a {
         display: block;
         color: white;
@@ -37,3 +41,4 @@ const MenuItem = styled(motion.li)`
         background-color: ${ props => props.active == true ? 'var(--prime-dark)' : 'var(--prime)' };
     }
 `;
+

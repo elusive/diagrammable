@@ -24,13 +24,12 @@
 /*	theme vars */
 .theme-default {
 	--back:       	#ffffff;
-	--back-light: 	#f6fafd;
-	--back-api: 	#eff8ff;
-	--prime:      	#0067ac;
+	--back-light: 	'AliceBlue';
+	--prime:      	#2274a5;
     --prime-dark:   #003f69;
-	--second:     	#676778;
-	--flash:      	#ff3e00;
-    --flash-dark:   #aa2900;
+	--second:     	#816c61;
+	--flash:      	#e7dfc6;
+    --flash-dark:   #A19C8A;
 	--heading:	var(--second);
 	--text:      		#444;
 	--sidebar-text: rgba(255, 255, 255, .75);
@@ -95,8 +94,8 @@ body {
 /*	typography ----------------------------- */
 body {
     margin: var(--margin);
-	font: 300 var(--h4)/var(--lh) var(--font);
-	background-color: var(--back);
+	font: 300 var(--h5)/var(--lh) var(--font);
+	background-color: var(--back-light);
 	color: var(--text);
 
 	/* default spacing of Overpass is a bit too airy */
@@ -131,7 +130,7 @@ p, ol, ul {
 .b, b, strong { font-weight: 600 }
 
 tt, code, kbd, samp {
-	font: 400 var(--code-fs)/1.7 var(--font-mono);
+	font: 400 var(--code-fs)/var(--h6) var(--font-mono);
 }
 
 code {
