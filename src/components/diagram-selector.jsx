@@ -1,17 +1,12 @@
 //import react from 'react';
 import styled from 'styled-components';
-import {motion} from 'framer-motion';
-import Button from './button';
+import { motion } from 'framer-motion';
 
 const Select = (props) => {
-
     return (
         <SelectionCard>
             <CardTitle>Diagram Selector</CardTitle>
             <p>Select the type of diagram you wish to create:</p>
-            <p>
-               <Button text="Flowchart" /> 
-            </p>
         </SelectionCard>
     );
 };
@@ -20,18 +15,20 @@ export default Select;
 
 const CardTitle = styled.h4`
     margin: 0;
-    padding: 8px;
-    background: var(--second);
+    padding: 2rem;
+    background: var(--flash);
     color: var(--back);
 `;
 
 const SelectionCard = styled(motion.div)`
     border: 1px solid var(--second);
+    margin: 12px;
     padding: 0;
+    width: 800px;
     box-shadow: 8px 8px 4px grey;
-    animate: {{ scale: [1,1,2,2,3,2,1,1]}};
-    transition: { duration: 20 };
-    & > p {
-        margin: 8px 12px;
-    };
+    animate: {
+         {
+            scale: [1, 3, 1];
+        }
+    }
 `;

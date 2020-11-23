@@ -1,89 +1,82 @@
 :root {
-	--nav-h:       6rem;
-	--top-offset:  6rem;
-	--sidebar-w:  30rem;
-	--sidebar-mid-w: 36rem;
-	--sidebar-large-w: 48rem;
-	--main-width: 80rem;
+    --nav-h: 6rem;
+    --top-offset: 6rem;
+    --sidebar-w: 30rem;
+    --sidebar-mid-w: 36rem;
+    --sidebar-large-w: 48rem;
+    --main-width: 80rem;
     --margin: 3rem;
-	--side-nav:  3.2rem;
-	--side-page:   var(--side-nav);
+    --side-nav: 3.2rem;
+    --side-page: var(--side-nav);
 
-	/* easings */
-	--out-back:    cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* easings */
+    --out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 @media screen and (min-width: 768px) {
-	:root {
-		--side-page:  14vw;
-		--top-offset: 10rem;
-		--side-nav: 4.8rem;
-	}
+    :root {
+        --side-page: 14vw;
+        --top-offset: 10rem;
+        --side-nav: 4.8rem;
+    }
 }
 
 /*	theme vars */
 .theme-default {
-	--back:       	#ffffff;
-	--back-light: 	'AliceBlue';
-	--prime:      	#2274a5;
-    --prime-dark:   #003f69;
-	--second:     	#816c61;
-	--flash:      	#e7dfc6;
-    --flash-dark:   #A19C8A;
-	--heading:	var(--second);
-	--text:      		#444;
-	--sidebar-text: rgba(255, 255, 255, .75);
-	--border-w:  		.3rem; /* border-width  */
-	--border-r:  		.4rem; /* border-radius */
+    --back: #ffffff;
+    --back-light: 'AliceBlue';
+    --prime: #2274a5;
+    --prime-dark: #003f69;
+    --second: #816c61;
+    --flash: #e7dfc6;
+    --flash-dark: #a19c8a;
+    --heading: var(--second);
+    --text: #444;
+    --sidebar-text: rgba(255, 255, 255, 0.75);
+    --border-w: 0.3rem; /* border-width  */
+    --border-r: 0.4rem; /* border-radius */
 }
 
 @font-face {
-	font-family: 'Overpass';
-	font-style: normal;
-	font-weight: 300;
-	src:
-		local('Overpass Light '),
-		local('Overpass-Light'),
-		url('https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap');
+    font-family: 'Overpass';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Overpass Light '), local('Overpass-Light'),
+        url('https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap');
 }
 
 @font-face {
-	font-family: 'Overpass';
-	font-style: normal;
-	font-weight: 600;
-	src:
-		local('Overpass Bold '),
-		local('Overpass-Bold'),
-		url('https://fonts.googleapis.com/css2?family=Overpass:wght@300;600&display=swap');
+    font-family: 'Overpass';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Overpass Bold '), local('Overpass-Bold'),
+        url('https://fonts.googleapis.com/css2?family=Overpass:wght@300;600&display=swap');
 }
 
 @font-face {
-	font-family: 'Fira Mono';
-	font-style: normal;
-	font-weight: 400;
-	src:
-		local('Fira Mono Regular '),
-		local('Fira Mono-Regular'),
-		url('https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap');
+    font-family: 'Fira Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Fira Mono Regular '), local('Fira Mono-Regular'),
+        url('https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap');
 }
 
-body {   
-  --font: 'Overpass', sans-serif;
-  --font-mono: 'Fira Mono', monospace;
+body {
+    --font: 'Overpass', sans-serif;
+    --font-mono: 'Fira Mono', monospace;
 }
-
 
 /*	typography variables */
 .typo-default {
-	--code-fs: 1.3rem;
-	--h6:      1.4rem;
-	--h5:      1.6rem;
-	--h4:      1.8rem; /* default font-size */
-	--h3:      2.6rem;
-	--h2:        3rem;
-	--h1:      3.2rem;
-	--linemax:   42em; /* max line-length */
-	--lh:  		  1.5; /* base line-height */
+    --code-fs: 1.3rem;
+    --h6: 1.4rem;
+    --h5: 1.6rem;
+    --h4: 1.8rem; /* default font-size */
+    --h3: 2.6rem;
+    --h2: 3rem;
+    --h1: 3.2rem;
+    --linemax: 42em; /* max line-length */
+    --lh: 1.5; /* base line-height */
 }
 
 /********************************************
@@ -94,56 +87,132 @@ body {
 /*	typography ----------------------------- */
 body {
     margin: var(--margin);
-	font: 300 var(--h5)/var(--lh) var(--font);
-	background-color: var(--back-light);
-	color: var(--text);
+    font: 300 var(--h5) / var(--lh) var(--font);
+    background-color: var(--back-light);
+    color: var(--text);
 
-	/* default spacing of Overpass is a bit too airy */
-	/* letter-spacing: -.013em; */
+    /* default spacing of Overpass is a bit too airy */
+    /* letter-spacing: -.013em; */
 }
 
-h1, h2, h3, h4, h5, h6, blockquote {
-	position: relative;
-	margin: 0;
-	color: var(--heading);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote {
+    position: relative;
+    margin: 0;
+    color: var(--heading);
 }
 
 /* h1, h2, h3, h4, h5, h6 { font-weight: 600 } */
-h6 { font-size: var(--h6) }
-h5 { font-size: var(--h5) }
-h4 { font-size: var(--h4) }
-h3 { font-size: var(--h3) }
-h2 { font-size: var(--h2) }
-h1 { font-size: var(--h1) }
-
-h1, h2 {
-	font-family: var(--font);
-	line-height: 1.25;
+h6 {
+    font-size: var(--h6);
+}
+h5 {
+    font-size: var(--h5);
+}
+h4 {
+    font-size: var(--h4);
+}
+h3 {
+    font-size: var(--h3);
+}
+h2 {
+    font-size: var(--h2);
+}
+h1 {
+    font-size: var(--h1);
 }
 
-h3 { font-weight: 300 }
-
-p, ol, ul {
-	margin: 0 0 1em 0;
+h1,
+h2 {
+    font-family: var(--font);
+    line-height: 1.25;
 }
 
-.b, b, strong { font-weight: 600 }
+h3 {
+    font-weight: 300;
+}
 
-tt, code, kbd, samp {
-	font: 400 var(--code-fs)/var(--h6) var(--font-mono);
+p,
+ol,
+ul {
+    margin: 0 0 1em 0;
+}
+
+.b,
+b,
+strong {
+    font-weight: 600;
+}
+
+tt,
+code,
+kbd,
+samp {
+    font: 400 var(--code-fs) / var(--h6) var(--font-mono);
 }
 
 code {
-	position: relative;
-	border-radius: .3em;
-	white-space: nowrap;
-	color: #444;
-	-webkit-font-smoothing: initial;
+    position: relative;
+    border-radius: 0.3em;
+    white-space: nowrap;
+    color: #444;
+    -webkit-font-smoothing: initial;
 }
 
 pre code {
-	top: 0;
-	white-space: inherit;
-	background-color: none;
+    top: 0;
+    white-space: inherit;
+    background-color: none;
 }
 
+.editor-container {
+    flex-grow: 1;
+    flex-basis: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    background-color: hsl(225, 6%, 25%);
+}
+
+.editor-container.collapsed {
+    flex-grow: 0;
+}
+
+.editor-container.collapsed .CodeMirror-scroll {
+    position: absolute;
+    overflow: hidden !important;
+}
+
+.expand-collapse-btn {
+    margin-left: 0.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.editor-title {
+    display: flex;
+    justify-content: space-between;
+    background-color: hsl(225, 6%, 13%);
+    color: white;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+}
+
+.CodeMirror {
+    height: 100% !important;
+}
+
+.code-mirror-wrapper {
+    flex-grow: 1;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    overflow: hidden;
+}
