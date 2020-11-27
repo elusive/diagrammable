@@ -4,7 +4,7 @@ import {motion} from 'framer-motion';
 
 import DiagramEditor from './diagram-editor';
 import { GlobalContext } from '../context/GlobalContext';
-import Preview from './preview';
+import DiagramPreview from './diagram-preview';
 
 const Edit = () => {
     const { code, type, config, setCode } = useContext(GlobalContext);
@@ -13,22 +13,24 @@ const Edit = () => {
         setCode(lines);
     }
     return (
-        <EditingCard>
-            <CardTitle>Edit Diagram</CardTitle>
-            <DiagramEditor
-                language="javascript"  // TODO: change to mermaid
-                value={code.join('\n')}
-                type={type}
-                displayName={"display name"}
-                onChange={formatCode}
-            />
-            <Preview 
-                code={code.join('\n')} 
-                type={type}
-                config={config}
-                displayName={type.toString()}
-            />
-        </EditingCard>
+        <>
+            <EditingCard>
+                <CardTitle>Edit Diagram</CardTitle>
+                <DiagramEditor
+                    language="javascript"  // TODO: change to mermaid
+                    value={code.join('\n')}
+                    type={type}
+                    displayName={"display name"}
+                    onChange={formatCode}
+                />
+                <DiagramPreview 
+                    code={code.join('\n')} 
+                    type={type}
+                    config={config}
+                    displayName={type.toString()}
+                />
+            </EditingCard>
+        </>
     );
 }
 

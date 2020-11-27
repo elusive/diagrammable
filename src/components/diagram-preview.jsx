@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {motion} from 'framer-motion';
 import mermaid from 'mermaid';
 
-const Preview = (props) => {
+const DiagramPreview = (props) => {
     const { 
         code,
         type,
@@ -15,29 +15,34 @@ const Preview = (props) => {
     
     const containerId = 'svgContainer';
     let element;
-    const insertSvg = (svg, binders) => { 
+    const insertSvg = (svg) => { 
+        element = document.querySelector("#svgContainer");
         element.innerHTML = svg; 
-        console.log(svg);
     };
+    
     useEffect(() => {
-        let _code = code;
-        _code = _code.replace(/</g, '&lt;');
-        _code = _code.replace(/>/g, '&gt;');
-        element = document.querySelector("#graph-div");
-        mermaid.initialize(config);
-        mermaid.render('graph-div', code, insertSvg);
+        try {
+            let _code = code;
+            _code = _code.replace(/</g, '&lt;');
+            _code = _code.replace(/>/g, '&gt;');
+            mermaid.initialize(config);
+            mermaid.render("graph-div", code, insertSvg);
+        }
+        catch(e) {
+            console.log(`View fail: ${e.message}`);
+        }
     }, [code, config]);
-
+    
     return (
         <PreviewCard>
             <CardTitle>Preview Diagram</CardTitle>
-            <div id="graph-div"><div id="svgContainer">
-            </div></div>
+            <div id="svgContainer">
+            svg container</div>
         </PreviewCard>
     );
 }
 
-export default Preview;
+export default DiagramPreview;
 
 const CardTitle = styled.h4`
     margin: 0;
