@@ -5,6 +5,7 @@ import {motion} from 'framer-motion';
 import DiagramEditor from './diagram-editor';
 import { GlobalContext } from '../context/GlobalContext';
 import DiagramPreview from './diagram-preview';
+import GridLayout from './grid-layout';
 
 const Edit = () => {
     const { code, type, config, setCode } = useContext(GlobalContext);
@@ -13,7 +14,7 @@ const Edit = () => {
         setCode(lines);
     }
     return (
-        <>
+        <GridLayout className="grid-container" colums="1fr 1fr" gap={8}>
             <EditingCard>
                 <CardTitle>Edit Diagram</CardTitle>
                 <DiagramEditor
@@ -23,14 +24,14 @@ const Edit = () => {
                     displayName={"display name"}
                     onChange={formatCode}
                 />
-                <DiagramPreview 
-                    code={code.join('\n')} 
-                    type={type}
-                    config={config}
-                    displayName={type.toString()}
-                />
             </EditingCard>
-        </>
+            <DiagramPreview 
+                code={code.join('\n')} 
+                type={type}
+                config={config}
+                displayName={type.toString()}
+            />
+        </GridLayout>
     );
 }
 

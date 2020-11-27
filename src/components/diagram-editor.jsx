@@ -1,4 +1,6 @@
 import React from 'react';
+import styled from 'styled-components';
+import {motion} from 'framer-motion';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/mode/xml/xml';
@@ -22,7 +24,7 @@ const DiagramEditor = (props) => {
     }
     console.log(value);
     return (
-        <div className={`editor-container ${open ? '' : 'collapsed'}`}>
+        <EditorContainer className={`editor-container ${open ? '' : 'collapsed'}`}>
             <div className="editor-title">{displayName}
                 <button type="button"
                     className="expand-collapse-btn"
@@ -42,8 +44,13 @@ const DiagramEditor = (props) => {
                     lineNumbers: true
                 }}
             />            
-        </div> 
+        </EditorContainer> 
     );
 };
 
 export default DiagramEditor
+
+const EditorContainer = styled(motion.div)`
+    min-width: 500px;
+    height: 700px;
+`
