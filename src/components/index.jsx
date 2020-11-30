@@ -1,10 +1,9 @@
 
 // export components 
 import Button from './button';
-import Select from './select'; 
-import Edit from './edit';
 import Header from './header';
-import Guide from './guide';
+import GridLayout from './grid-layout';
+import MenuBar from './menubar';
 
-export { Button, Select, Edit, Header, Guide };
+export { Button, Header, MenuBar, GridLayout };
 

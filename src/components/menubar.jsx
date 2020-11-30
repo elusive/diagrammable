@@ -3,7 +3,7 @@ import {motion} from 'framer-motion';
 
 
 let isSelectActive = window.location.pathname.includes("select");
-let isEditorActive = window.location.pathname.includes("editor");
+let isEditorActive = window.location.pathname.includes("edit");
 let isGuideActive = window.location.pathname.includes("guide");
 
 const MenuBar = () => {

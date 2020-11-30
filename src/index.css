@@ -13,7 +13,7 @@
     --out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
     :root {
         --side-page: 14vw;
         --top-offset: 10rem;
@@ -68,9 +68,9 @@ body {
 
 /*	typography variables */
 .typo-default {
-    --code-fs: 1.3rem;
-    --h6: 1.4rem;
-    --h5: 1.6rem;
+    --code-fs: 1.1rem;
+    --h6: 1.2rem;
+    --h5: 1.4rem;
     --h4: 1.8rem; /* default font-size */
     --h3: 2.6rem;
     --h2: 3rem;
@@ -87,7 +87,7 @@ body {
 /*	typography ----------------------------- */
 body {
     margin: var(--margin);
-    font: 300 var(--h5) / var(--lh) var(--font);
+    font: 300 var(--h6) / var(--lh) var(--font);
     background-color: var(--back-light);
     color: var(--text);
 
@@ -170,6 +170,19 @@ pre code {
     background-color: none;
 }
 
+.preview-container {
+    margin: 20px;
+    flex-grow: 1;
+    flex-basis: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 1.0rem;
+    align-items: center;
+}
+.preview-container.collapsed {
+    flex-grow: 0;
+}
+
 .editor-container {
     flex-grow: 1;
     flex-basis: 0;
@@ -194,16 +207,6 @@ pre code {
     border: none;
     color: white;
     cursor: pointer;
-}
-
-.editor-title {
-    display: flex;
-    justify-content: space-between;
-    background-color: hsl(225, 6%, 13%);
-    color: white;
-    padding: 0.5rem 0.5rem 0.5rem 1rem;
-    border-top-right-radius: 0.5rem;
-    border-top-left-radius: 0.5rem;
 }
 
 .CodeMirror {

@@ -1,6 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
-import {motion} from 'framer-motion';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/mode/xml/xml';
@@ -9,6 +7,7 @@ import 'codemirror/mode/css/css';
 import { Controlled as ControlledEditor } from 'react-codemirror2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCompressAlt, faExpandAlt } from '@fortawesome/free-solid-svg-icons';
+import { EditorContainer } from './styled';
 
 const DiagramEditor = (props) => {
     const {
@@ -22,7 +21,7 @@ const DiagramEditor = (props) => {
     const handleChange = (editor, data, value) => {
         onChange(value);
     }
-    console.log(value);
+
     return (
         <EditorContainer className={`editor-container ${open ? '' : 'collapsed'}`}>
             <div className="editor-title">{displayName}
@@ -49,8 +48,3 @@ const DiagramEditor = (props) => {
 };
 
 export default DiagramEditor
-
-const EditorContainer = styled(motion.div)`
-    min-width: 500px;
-    height: 700px;
-`
