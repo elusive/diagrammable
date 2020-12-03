@@ -18,5 +18,6 @@ export const DiagramType = Object.freeze({
 export const ActionType = Object.freeze({
     UPDATE_CODE: enumValue('UPDATE_CODE'),
     UPDATE_CONFIG: enumValue('UPDATE_CONFIG'),
+    LOAD_EXAMPLE: enumValue('LOAD_EXAMPLE'),
 });
 

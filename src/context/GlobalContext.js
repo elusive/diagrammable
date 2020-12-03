@@ -48,6 +48,13 @@ export const GlobalContextProvider = ({ children }) => {
        });
     };
 
+    const loadExample = (newType) => {
+       dispatch({
+           type: ActionType.LOAD_EXAMPLE,
+           payload: newType,
+       }); 
+    }
+
     console.log(`state.code = ${state.code}`);
     return (
         <GlobalContext.Provider
@@ -57,7 +64,8 @@ export const GlobalContextProvider = ({ children }) => {
                 type: state.type,
                 setCode,
                 setConfig,
-                setType
+                setType,
+                loadExample,
             }}>
             {children}
         </GlobalContext.Provider>  

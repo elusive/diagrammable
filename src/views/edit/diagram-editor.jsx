@@ -7,7 +7,7 @@ import 'codemirror/mode/css/css';
 import { Controlled as ControlledEditor } from 'react-codemirror2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCompressAlt, faExpandAlt } from '@fortawesome/free-solid-svg-icons';
-import { EditorContainer } from './styled';
+import { EditorContainer, EditCardDisplayName } from './styled';
 
 const DiagramEditor = (props) => {
     const {
@@ -24,13 +24,14 @@ const DiagramEditor = (props) => {
 
     return (
         <EditorContainer className={`editor-container ${open ? '' : 'collapsed'}`}>
-            <div className="editor-title">{displayName}
+            <EditCardDisplayName>
+                {displayName}
                 <button type="button"
                     className="expand-collapse-btn"
                     onClick={() => setOpen(prevOpen => !prevOpen)}>
                     <FontAwesomeIcon icon={open ? faCompressAlt : faExpandAlt} />
                 </button>
-            </div>
+            </EditCardDisplayName>
             <ControlledEditor
                 onBeforeChange={handleChange}
                 value={value}
