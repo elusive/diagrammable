@@ -1,4 +1,13 @@
 
+## 0.0.3 (2020-12-02)
+-   Update colors to more RND style blue and goldish.    [`5b68fea`]
+-   Refactor to create views folders and move styles.    [`210243d`]
+-   Move preview to the side of editor instead of below. [`e8e5fa1`]
+
+[`5b68fea`]: https://github.com/elusive/diagrammable/commit/5b68fea79681da5c926f4e61ac93d5f7352b527d
+[`210243d`]: https://github.com/elusive/diagrammable/commit/210243d38fc55c2cc25685bc8c2f669ea5d58f1c
+[`e8e5fa1`]: https://github.com/elusive/diagrammable/commit/e8e5fa17a292b3fd56d38359eab4e1c74a597190
+
 ## 0.0.2 (2020-11-22)
 -   Configure site styles and colors.   [`2e056ee`]
 -   Added editor component and view.    [`94aa9fa`]
