@@ -7,9 +7,8 @@ const Header = (props) => {
     return (
         <>
             <Title>RND Diagrams</Title>
-            <MenuBar />
-            <p>Easily create and store diagrams without worrying about keeping 
-               track of the original files for later editing.</p>
+            <SubTitle>Easily create and store diagrams without worrying about keeping 
+               track of the original files for later editing.</SubTitle>
         </>
     );
 }
@@ -17,6 +16,10 @@ const Header = (props) => {
 export default Header;
 
 const Title = styled.h2`
-    padding: 20px;
+    padding: 0px;
     color: var(--heading);
+`;
+
+const SubTitle = styled.p`
+    color: var(--prime);
 `;

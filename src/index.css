@@ -25,6 +25,7 @@
 .theme-default {
     --back: radial-gradient(#40404b, #111118) rgba(34,34,40,0.94);
     --back-light: #fbfffe;
+    --back-edit: #F6F6F9;
     --prime: #06263d;
     --prime-dark: #003f69;
     --second: #ffc648;
@@ -167,6 +168,10 @@ pre code {
     top: 0;
     white-space: inherit;
     background-color: none;
+}
+
+.sidenav-rnd {
+    background: var(--prime) !important;
 }
 
 .preview-container {
