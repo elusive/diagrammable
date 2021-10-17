@@ -91,7 +91,7 @@ body {
     margin: var(--margin);
     font: 300 var(--h6) / var(--lh) var(--font);
     background: var(--back-light);
-    color: var(--text-light);
+    color: var(--prime);
     height: 100vh;
 }
 
