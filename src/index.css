@@ -40,18 +40,18 @@
 }
 
 @font-face {
-    font-family: 'Overpass';
+    font-family: 'Roboto';
     font-style: normal;
     font-weight: 300;
-    src: local('Overpass Light'), local('Overpass-Light'),
+    src: local('Roboto Light'), local('Roboto-Light'),
         url('https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap');
 }
 
 @font-face {
-    font-family: 'Overpass';
+    font-family: 'Roboto';
     font-style: normal;
     font-weight: 600;
-    src: local('Overpass'), local('Overpass'),
+    src: local('Roboto'), local('Roboto'),
         url('https://fonts.googleapis.com/css2?family=Overpass:wght@600&display=swap');
 }
 
@@ -64,7 +64,7 @@
 }
 
 body {
-    --font: 'Overpass', sans-serif;
+    --font: 'Roboto', sans-serif;
     --font-mono: 'Fira Mono', monospace;
 }
 

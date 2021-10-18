@@ -1,18 +1,26 @@
 import {Button} from '../../components/index';
 import {DiagramSelector} from './diagram-selector';
-import {CardTitle} from '../../components/styled';
-import {SelectionCard} from './styled';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
 
 const Select = (props) => {
 
     return (
-        <SelectionCard>
+        <Card>
 
-            <CardTitle>Diagram Selector</CardTitle>
+            <CardContent>
+                <Typography variant="h4" component="div" gutterBottom>
+                    Select the type of Diagram to Build:
+                </Typography>
+
+                <DiagramSelector />
+
+            </CardContent>
                         
-            <DiagramSelector />
             
-        </SelectionCard>
+        </Card>
     );
 };
 
