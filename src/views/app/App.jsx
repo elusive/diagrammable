@@ -1,9 +1,7 @@
 import { Redirect, Route, Switch } from 'react-router-dom';
 import * as views from '../index';
 import { Header } from '../../components/index';
-import SideMenu from './SideMenu';
 import { GlobalContextProvider } from '../../context/GlobalContext';
-import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -22,7 +20,6 @@ function App() {
   return (
     <GlobalContextProvider>
       <ThemeProvider theme={theme}>
-        <SideMenu>
           <Header />
           <Switch>
             <Route path="/select" component={views.Select} />
@@ -30,7 +27,6 @@ function App() {
             <Route path="/guide" component={views.Guide} />
             <Redirect from="*" to="/" /> 
           </Switch>
-        </SideMenu>
       </ThemeProvider>
     </GlobalContextProvider>
   );

@@ -22,7 +22,9 @@ export const DiagramSelector = (props) => {
 
     return (
         <>
-            <Tabs value={value} onChange={handleTabChanged} aria-label="Diagram Type Selection">
+            <Tabs value={value} onChange={handleTabChanged} 
+                textColor="secondary" indicatorColor="secondary"
+                aria-label="Diagram Type Selection">
                 <Tab label="Flowchart" {...a11yProps(0)} />
                 <Tab label="Sequence Diagram" {...a11yProps(1)} />
                 <Tab label="Class Diagram" {...a11yProps(2)} />

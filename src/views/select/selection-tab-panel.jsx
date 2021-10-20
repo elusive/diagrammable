@@ -9,7 +9,7 @@ export function SelectionTabPanel(props) {
 
     return (
         <div
-            role="editor" 
+            role="tab" 
             hidden={value !== index}
             id={`selection-tab-panel-${index}`}
             aria-labelledby={`selection-tab-${index}`}
