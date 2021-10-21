@@ -1,34 +1,52 @@
-//import react from 'react';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import React from 'react';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import { SelectionTabPanel } from './selection-tab-panel';
 
-const Select = (props) => {
+
+function a11yProps(index) {
+    return {
+        id: `simple-tab-${index}`,
+        'aria-controls': `simple-tabpanel-${index}`,
+    };
+}
+
+export const DiagramSelector = (props) => {
+
+    const [value, setValue] = React.useState(0);
+
+    const handleTabChanged = (event, newValue) => {
+        setValue(newValue);
+    };
+
+
     return (
-        <SelectionCard>
-            <CardTitle>Diagram Selector</CardTitle>
-            <p>Select the type of diagram you wish to create:</p>
-        </SelectionCard>
+        <>
+            <Tabs value={value} onChange={handleTabChanged} 
+                textColor="secondary" indicatorColor="secondary"
+                aria-label="Diagram Type Selection">
+                <Tab label="Flowchart" {...a11yProps(0)} />
+                <Tab label="Sequence Diagram" {...a11yProps(1)} />
+                <Tab label="Class Diagram" {...a11yProps(2)} />
+                <Tab label="Entity Relationship" {...a11yProps(3)} />
+            </Tabs>
+
+            <SelectionTabPanel index={0} value={value}>
+                Example flowchart and source goes here...
+            </SelectionTabPanel>
+
+            <SelectionTabPanel index={1} value={value}>
+                Example sequence diagram goes here...
+            </SelectionTabPanel>
+
+            <SelectionTabPanel index={2} value={value}>
+                Example class diagram goes here...
+            </SelectionTabPanel>
+
+            <SelectionTabPanel index={3} value={value}>
+                Example entity relationship chart goes here...
+            </SelectionTabPanel>
+        </>
     );
 };
 
-export default Select;
-
-const CardTitle = styled.h4`
-    margin: 0;
-    padding: 2rem;
-    background: var(--flash);
-    color: var(--back);
-`;
-
-const SelectionCard = styled(motion.div)`
-    border: 1px solid var(--second);
-    margin: 12px;
-    padding: 0;
-    width: 800px;
-    box-shadow: 8px 8px 4px grey;
-    animate: {
-         {
-            scale: [1, 3, 1];
-        }
-    }
-`;

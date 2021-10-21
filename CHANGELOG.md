@@ -1,5 +1,14 @@
 
-## 0.0.3 (2020-12-02)
+# 0.0.4 (2021-10-21)
+-   Replace trend side nav with material drawer. (20 hours ago)                        [`697720e`]
+-   Add MUI toolkit and new color palette for use with the MD controls. (3 days ago)   [`a1ec4cb`]
+-   Add mui material toolkit to the project. (4 days ago)                              [`d42345f`]
+
+[`697720e`]: https://github.com/elusive/diagrammable/commit/697720e
+[`a1ec4cb`]: https://github.com/elusive/diagrammable/commit/a1ec4cb
+[`d42345f`]: https://github.com/elusive/diagrammable/commit/d42345f
+
+# 0.0.3 (2020-12-02)
 -   Update colors to more RND style blue and goldish.    [`5b68fea`]
 -   Refactor to create views folders and move styles.    [`210243d`]
 -   Move preview to the side of editor instead of below. [`e8e5fa1`]
