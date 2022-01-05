@@ -12,6 +12,10 @@ const initialState = {
     type: DiagramType.FLOW_CHART,
     config: {
         theme: 'default',
+        securityLevel: 'loose',
+        flowchart: {
+            'htmlLabels': true
+         }
     },
     open: true,
 }

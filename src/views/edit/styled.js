@@ -8,8 +8,10 @@ import {motion} from 'framer-motion';
  */
 
 export const EditorContainer = styled(motion.div)`
-    min-width: 500px;
-    height: 700px;
+    display: flex;
+    align-content: justify;
+    width: auto;
+    height: auto;
     background: var(--back-edit);
 `;
 
@@ -34,8 +36,9 @@ export const EditCardDisplayName = styled.h5`
 
 export const EditingCard = styled(motion.div)`
     flex: auto;
-    max-width: 600px;
-    height: 60vh;
+    max-width: 1000px;
+    height: auto;
+    min-height: 80vh;
     margin-right: 20px;
     border: 1px solid var(--prime);
     padding: 0;
@@ -61,6 +64,7 @@ export const PreviewCardTitle = styled.h4`
 export const PreviewCard = styled(motion.div)`
     border: 1px solid var(--prime);
     padding: 0;
+    width: 1000px;
     min-width: 550px;
     background: var(--back-edit);
     height: 60vh;

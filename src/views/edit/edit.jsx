@@ -21,7 +21,7 @@ const Edit = () => {
             <EditingCard>
                 <EditCardTitle>Edit Diagram</EditCardTitle>
                 <DiagramEditor
-                    language="javascript"  // TODO: change to mermaid
+                    language="mermaid"  // TODO: change to mermaid
                     value={code.join('\n')}
                     type={type}
                     displayName={"display name"}
