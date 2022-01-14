@@ -36,10 +36,10 @@ export const EditCardDisplayName = styled.h5`
 
 export const EditingCard = styled(motion.div)`
     flex: auto;
-    max-width: 1000px;
+    max-width: 950px;
     height: auto;
-    min-height: 80vh;
-    margin-right: 20px;
+    min-height: 85vh;
+    margin: 20px;
     border: 1px solid var(--prime);
     padding: 0;
     box-shadow: 8px 8px 4px grey;
@@ -64,8 +64,12 @@ export const PreviewCardTitle = styled.h4`
 export const PreviewCard = styled(motion.div)`
     border: 1px solid var(--prime);
     padding: 0;
-    width: 1000px;
-    min-width: 550px;
+    margin: 20px;
+    width: auto;
+    height: auto;
+    min-height: 85vh;
+    max-width: 950px;
+    min-width: 750px;
     background: var(--back-edit);
     height: 60vh;
     box-shadow: 8px 8px 4px grey;
