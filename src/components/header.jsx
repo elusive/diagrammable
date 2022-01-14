@@ -15,7 +15,7 @@ const Header = (props) => {
             <Box sx={{ flexGrow: 1, mt:0 }}>
                 <AppBar position="static">
                     <Toolbar>
-                    <SideMenu anchor="right" />
+                    <SideMenu anchor="left" />
                     <Typography variant="h4" component="span">
                         Diagrammable
                     </Typography>
