@@ -25,7 +25,7 @@
 .theme-default {
     --back: radial-gradient(#40404b, #111118) rgba(34,34,40,0.94);
     --back-light: #fbfffe;
-    --back-edit: #F6F6F9;
+    --back-edit: #eaeaea;
     --prime: #06263d;
     --prime-dark: #003f69;
     --second: #ffc648;
@@ -93,6 +93,7 @@ body {
     background: var(--back-light);
     color: var(--prime);
     height: 100vh;
+    margin: 0;
 }
 
 h1,
