@@ -24,9 +24,7 @@ const Header = (props) => {
                     </Toolbar>
                 </AppBar>
             </Box>
-            <Typography variant="subtitle1" component="div" sx={{ margin: 1.5, flexGrow: 1, textAlign: 'right' }}>Easily create and store diagrams without worrying about keeping 
-               track of the original files for later editing.</Typography>
-        </React.Fragment>
+           </React.Fragment>
     );
 }
 
