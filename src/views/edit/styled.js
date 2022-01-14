@@ -78,3 +78,21 @@ export const PreviewCard = styled(motion.div)`
     };
 `;
 
+export const PreviewControlsDiv = styled(motion.div)`
+    display: flex;
+    flex-direction:row;
+    padding: 0;
+    margin: 2px;
+    width: auto;
+    align-self: flex-start;
+    align-content: 
+    border: 1px solid var(--prime);
+`;
+
+export const PreviewControlsDirectionals = styled(motion.div)`
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    font-size: 24pt;
+    padding: 0;
+`
