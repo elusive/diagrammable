@@ -5,8 +5,9 @@ const isDev = require("electron-is-dev");
 function createWindow() {
     // create instance of BrowserWindow to contain app
     const win = new BrowserWindow({
-        width: 1024,
-        height: 768,
+        width: 1920,
+        height: 1080,
+        autoHideMenuBar: true,
         webPreferences: {
             nodeIntegration: true
         }

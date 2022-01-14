@@ -36,13 +36,14 @@ export const EditCardDisplayName = styled.h5`
 
 export const EditingCard = styled(motion.div)`
     flex: auto;
-    max-width: 1000px;
+    max-width: 48vw;
     height: auto;
-    min-height: 80vh;
-    margin-right: 20px;
-    border: 1px solid var(--prime);
+    min-width: 550px;
+    min-height: 85vh;
+    margin: 20px;
     padding: 0;
-    box-shadow: 8px 8px 4px grey;
+    box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+    background: var(--back-edit);
     animate: {{ scale: [1,1,2,2,3,2,1,1]}};
     transition: { duration: 20 };
     & > p {
@@ -62,13 +63,14 @@ export const PreviewCardTitle = styled.h4`
 `;
 
 export const PreviewCard = styled(motion.div)`
-    border: 1px solid var(--prime);
+    flex:auto;
     padding: 0;
-    width: 1000px;
+    margin: 20px;
+    max-width: 48vw;
+    min-height: 85vh;
     min-width: 550px;
     background: var(--back-edit);
-    height: 60vh;
-    box-shadow: 8px 8px 4px grey;
+    box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);  
     animate: {{ scale: [1,1,2,2,3,2,1,1]}};
     transition: { duration: 20 };
     & > p {
@@ -76,3 +78,22 @@ export const PreviewCard = styled(motion.div)`
     };
 `;
 
+export const PreviewControlsDiv = styled(motion.div)`
+    display: flex;
+    flex-direction:row;
+    padding: 0;
+    margin: 2px;
+    width: auto;
+    align-self: flex-start;
+    align-content: 
+    border: 1px solid var(--prime);
+    z-index:99;
+`;
+
+export const PreviewControlsDirectionals = styled(motion.div)`
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    font-size: 24pt;
+    padding: 0;
+`
