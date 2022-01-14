@@ -87,6 +87,7 @@ export const PreviewControlsDiv = styled(motion.div)`
     align-self: flex-start;
     align-content: 
     border: 1px solid var(--prime);
+    z-index:99;
 `;
 
 export const PreviewControlsDirectionals = styled(motion.div)`
