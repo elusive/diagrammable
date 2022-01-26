@@ -1,4 +1,3 @@
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 
@@ -9,14 +8,14 @@ export function SelectionTabPanel(props) {
 
     return (
         <div
-            role="tab" 
+            role="tabpanel" 
             hidden={value !== index}
             id={`selection-tab-panel-${index}`}
             aria-labelledby={`selection-tab-${index}`}
             {...other}>
             {value === index && (
                 <Box sx={{ p: 3 }}>
-                    <Typography>{children}</Typography>
+                    <div> {children} </div>
                 </Box>
             )}
         </div>

@@ -3,6 +3,7 @@ import DiagramEditor from './diagram-editor';
 import DiagramPreview from './diagram-preview';
 import { GridLayout } from '../../components/index';
 import { GlobalContext } from '../../context/GlobalContext';
+import ExportsContainer from '../../components/export-actions';
 import {
     EditingCard,
     EditCardTitle,
@@ -17,6 +18,7 @@ const Edit = () => {
         setCode(lines);
     }
     return (
+        <React.Fragment>
         <GridLayout className="grid-container" colums="1fr 1fr" gap={8}>
             <EditingCard>
                 <EditCardTitle>Edit Diagram</EditCardTitle>
@@ -38,6 +40,8 @@ const Edit = () => {
                 />
             </PreviewCard>
         </GridLayout>
+        <ExportsContainer code={code.join('\n')} config={config} type={type} displayName={"display name"} />
+        </React.Fragment>
     );
 }
 

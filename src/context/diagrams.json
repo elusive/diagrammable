@@ -1,5 +1,6 @@
 [
   {
+    "name":"Flowchart",
     "type":"flow_chart",
     "code": [
       "graph TD",
@@ -11,6 +12,34 @@
     ]
   },
   {
+    "name":"Class Diagram",
+    "type":"class_diagram",
+    "code": [
+      "classDiagram",
+      "Animal <|-- Duck",
+      "Animal <|-- Fish",
+      "Animal <|-- Zebra",
+      "Animal : +int age",
+      "Animal : +string gender",
+      "Animal : +isMammal()",
+      "Animal : +mate()",
+      "class Duck {",
+        "+string beakColor",
+        "+swim()",
+        "+quack()",
+      "}",
+      "class Fish {",
+        "-int sizeInFeet",
+        "-canEat()",
+      "}",
+      "class Zebra {",
+        "+bool is_wild",
+        "+run()",
+      "}"
+    ]
+  },
+  {
+    "name": "Sequence Diagram",
     "type":"sequence_diagram",
     "code":[
       "sequenceDiagram",
@@ -18,6 +47,21 @@
       "Alice->>+John: John, can you hear me?",
       "John-->>-Alice: Hi Alice, I can hear you!",
       "John-->>-Alice: I feel great!"
+    ]
+  },
+  {
+    "name": "ER Diagram",
+    "type": "entity_relationship",
+    "code": [
+      "erDiagram",
+          "CUSTOMER }|..|{ DELIVERY-ADDRESS : has",
+          "CUSTOMER ||--o{ ORDER : places",
+          "CUSTOMER ||--o{ INVOICE : 'liable for'",
+          "DELIVERY-ADDRESS ||--o{ ORDER : receives",
+          "INVOICE ||--|{ ORDER : covers",
+          "ORDER ||--|{ ORDER-ITEM : includes",
+          "PRODUCT-CATEGORY ||--|{ PRODUCT : contains",
+          "PRODUCT ||--o{ ORDER-ITEM : 'ordered in'"
     ]
   }
 ]

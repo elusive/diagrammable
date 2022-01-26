@@ -8,4 +8,10 @@ export const CardTitle = styled.h4`
     color: var(--back-light);
 `;
 
+export const ExportCard = styled.div`
+    margin: 8px;
+    padding: 4px;
+    background: var(--back-light);
+    color: var(--prime);
+`;
 

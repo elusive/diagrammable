@@ -12,6 +12,7 @@ import {
   PreviewControlsDirectionals,
   PreviewControlsDiv
 } from './styled';
+import Constants from '../../constants';
 
 
 const DiagramPreview = (props) => {
@@ -23,8 +24,6 @@ const DiagramPreview = (props) => {
         onChange
     } = props;
     
-    const containerId = 'svgContainer';
-    const svgId = 'graph-div';  
     let element;
     
     const insertSvg = (svg) => { 
@@ -43,12 +42,12 @@ const DiagramPreview = (props) => {
         catch(e) {
             console.log(`View fail: ${e.message}`);
         }
-    }, [code, config]);
+    }, [code, mermaid]);
 
 
     // zoom functionality  
     const zoom = (direction) => {
-      const svg = document.getElementById(svgId);
+      const svg = document.getElementById(Constants.SvgId);
       const { scale, x, y } = getTransformParameters(svg);
       let dScale = 0.1;
       if (direction == "out") dScale *= -1;
@@ -74,7 +73,7 @@ const DiagramPreview = (props) => {
         ") translateX(" + x + "%) translateY(" + y + "%)";
 
     const pan = (direction) => {
-      const svg = document.getElementById(svgId);
+      const svg = document.getElementById(Constants.SvgId);
       const { scale, x, y } = getTransformParameters(svg);
       let dx = 0,
         dy = 0;
@@ -95,6 +94,7 @@ const DiagramPreview = (props) => {
       svg.style.transform = getTransformString(scale, x + dx, y + dy);
     };
 
+    let svgContainer = Constants.SvgContainerId;
 
 
     // return html elements for UI
@@ -129,7 +129,7 @@ const DiagramPreview = (props) => {
                   </IconButton>
             </PreviewControlsDiv>
           <div>
-           <div id="svgContainer"></div>
+           <div id={svgContainer}></div>
           </div>
         </div>
     );

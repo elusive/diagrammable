@@ -12,3 +12,11 @@ export const SelectionCard = styled(motion.div)`
         margin: 8px 12px;
     };
 `;
+
+export const CodeContainer = styled(motion.pre)`
+    font-size: 1.2em;
+    font-family: var(--font-mono);
+    color: #ccc;
+    margin: 28px;
+    float:left;
+`;
