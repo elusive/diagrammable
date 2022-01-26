@@ -4,8 +4,7 @@
     "type":"flow_chart",
     "code": [
       "graph TD",
-      "A[Christmas] -->|Get money| B(Go shopping)",
-      "B --> C{Let me think}",
+      "A(Christmas) -->|Get money| C{Let me think}",
       "C -->|One| D[Laptop]",
       "C -->|Two| E[iPhone]",
       "C -->|Three| F[fa:fa-car Car]"
