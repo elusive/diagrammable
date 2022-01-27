@@ -219,3 +219,9 @@ pre code {
     flex-grow: 1;
     overflow: hidden;
 }
+
+
+PreviewControlsDiv span  {
+    padding: 0px;
+    background: pink;
+}

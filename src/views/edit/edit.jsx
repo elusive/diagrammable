@@ -32,6 +32,11 @@ const Edit = () => {
             </EditingCard>
             <PreviewCard>
                 <PreviewCardTitle>Preview Diagram</PreviewCardTitle>
+                <ExportsContainer 
+                    code={code} 
+                    config={config} 
+                    type={type} 
+                    displayName={"display name"} />
                 <DiagramPreview 
                     code={code.join('\n')} 
                     type={type}
@@ -40,7 +45,6 @@ const Edit = () => {
                 />
             </PreviewCard>
         </GridLayout>
-        <ExportsContainer code={code.join('\n')} config={config} type={type} displayName={"display name"} />
         </React.Fragment>
     );
 }

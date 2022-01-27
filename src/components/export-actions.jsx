@@ -9,17 +9,28 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import SaveAsIcon from '@mui/icons-material/Save';
+import CopyIcon from '@mui/icons-material/ContentCopy';
 
 import Constants from '../constants';
 import { GlobalContext } from '../context/GlobalContext';
 import { CardTitle, ExportCard } from './styled';
+import IconButton from '@mui/material/IconButton';
+import ZoomInIcon from '@mui/icons-material/ZoomIn';
+import ZoomOutIcon from '@mui/icons-material/ZoomOut';
+import KeyboardArrowUp from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import {
+  PreviewControlsDirectionals,
+  PreviewControlsDiv
+} from './styled';
 
 
 const ExportsContainer = (props) => {
     let { displayName } = props;   
     let { code, setCode, config } = useContext(GlobalContext);
-    let [enteredImageSize, setEnteredImageSize] = useState(0);
-    let [selectedImageSizer, setSelectedImageSizer] = useState('auto');
+    
     let rendererUrl = Constants.MermaindInkUrl;
     
     /*     MERMAID.INK USAGE
@@ -55,7 +66,7 @@ const ExportsContainer = (props) => {
         const box = svg.getBoundingClientRect();
         canvas.width = box.width;
         canvas.height = box.height;
-        if (selectedImageSizer === 'width') {
+       /* if (selectedImageSizer === 'width') {
             const ratio = box.height / box.width;
             canvas.width = enteredImageSize;
             canvas.height = enteredImageSize * ratio;
@@ -63,7 +74,7 @@ const ExportsContainer = (props) => {
             const ratio = box.height / box.width;
             canvas.width = enteredImageSize * ratio;
             canvas.height = enteredImageSize;
-        }
+        }*/
 
         const graphicsContext = canvas.getContext('2d');
         graphicsContext.fillStyle = 'transparent';
@@ -125,41 +136,116 @@ const ExportsContainer = (props) => {
         exportDiagramToImage(evt, clipboardExporter);
     };
 
+    /*  ZOOM & PAN Functions
+     */
+    const zoom = (direction) => {
+      const svg = document.getElementById(Constants.SvgId);
+      const { scale, x, y } = getTransformParameters(svg);
+      let dScale = 0.1;
+      if (direction == "out") dScale *= -1;
+      if (scale == 0.1 && direction == "out") dScale = 0;
+      svg.style.transform = getTransformString(scale + dScale, x, y);
+    };
+
+    const getTransformParameters = (element) => {
+      const transform = element.style.transform;
+      let scale = 1,
+        x = 0,
+        y = 0;
+      if (transform.includes("scale"))
+        scale = parseFloat(transform.slice(transform.indexOf("scale") + 6));
+      if (transform.includes("translateX"))
+        x = parseInt(transform.slice(transform.indexOf("translateX") + 11));
+      if (transform.includes("translateY"))
+        y = parseInt(transform.slice(transform.indexOf("translateY") + 11));
+      return { scale, x, y };
+    };
+
+    const getTransformString = (scale, x, y) => "scale(" + scale + 
+        ") translateX(" + x + "%) translateY(" + y + "%)";
+
+    const pan = (direction) => {
+      const svg = document.getElementById(Constants.SvgId);
+      const { scale, x, y } = getTransformParameters(svg);
+      let dx = 0,
+        dy = 0;
+      switch (direction) {
+        case "left":
+          dx = -3;
+          break;
+        case "right":
+          dx = 3;
+          break;
+        case "up":
+          dy = -3;
+          break;
+        case "down":
+          dy = 3;
+          break;
+      }
+      svg.style.transform = getTransformString(scale, x + dx, y + dy);
+    };
 
 
     return (
         <React.Fragment>
             <div id="exportActions">
-                <CardTitle>Export Diagram</CardTitle>
                 <ExportCard>
                     <div id="export-buttons">
-                {
-                    isClipboardSupported() &&
-                    <Button id="copy-png-button" 
-                        onClick={(e) => onCopyToClipboardClick(e) }>
-                        Copy to Clipboard
-                    </Button>
-                }
-                    <Button id="export-png-button" onClick={(e) => onDownloadPngClick(e) }>
-                        <SaveAsIcon/>
-                    </Button>
+                    {
+                        isClipboardSupported() &&
+                        <Button id="copy-png-button" 
+                            onClick={(e) => onCopyToClipboardClick(e) }>
+                            Copy Code&nbsp; <CopyIcon />
+                        </Button>
+                    }
+                        <Button id="export-png-button" onClick={(e) => onDownloadPngClick(e) }>
+                            Save Image&nbsp;<SaveAsIcon/>
+                        </Button>
                     </div>
-                    <FormControl component="fieldset">
-                        <FormLabel component="legend">PNG Size</FormLabel>
-                        <RadioGroup
-                            row
-                            aria-label="PNG Size"
-                            defaultValue="auto"
-                            name="selectedImageSizer"
-                            value={setSelectedImageSizer}
-                            onChange={(e)=>setSelectedImageSizer(e.target.value)}>
-                            <FormControlLabel checked={selectedImageSizer === 'auto'} value="auto" control={<Radio/>} label="Auto" />
-                            <FormControlLabel checked={selectedImageSizer === 'width'} value="width" control={<Radio/>} label="Width" />
-                            <FormControlLabel checked={selectedImageSizer === 'height'} value="height" control={<Radio/>} label="Height" />
-                        </RadioGroup>
-                    </FormControl>
-                            
-                    { 
+              <PreviewControlsDiv>
+                  <IconButton style={{ padding: 0 }} color="primary" aria-label="Zoom In" component="span"
+                  onClick={() => zoom("in")}>
+                  <ZoomInIcon sx={{fontSize:30}} />
+                </IconButton>
+                <IconButton style={{ padding: 0 }} ccolor="primary" aria-label="Zoom Out" component="span"
+                  onClick={() => zoom("out")}>
+                    <ZoomOutIcon sx={{fontSize:30}} />
+                </IconButton>
+                 <IconButton style={{ padding: 0 }} ccolor="primary" aria-label="Pan Left" component="span"
+                    onClick={() => pan("left")}>
+                    <KeyboardArrowLeft /> 
+                 </IconButton>
+                 <PreviewControlsDirectionals>
+                     <IconButton style={{ padding: 0, margin: "-4px" }} ccolor="primary" aria-label="Pan Up" component="span"
+                      onClick={() => pan("up")}>
+                        <KeyboardArrowUp /> 
+                    </IconButton>
+                     <IconButton style={{ padding: 0, margin: "-4px" }} ccolor="primary" aria-label="Pan Down" component="span"
+                      onClick={() => pan("down")}>
+                        <KeyboardArrowDown sx={{fontSize:24}} /> 
+                    </IconButton>
+                 </PreviewControlsDirectionals>
+                  <IconButton sx={{ padding: 0 }} ccolor="primary" aria-label="Pan Right" component="span"
+                     onClick={() => pan("right")}>
+                        <KeyboardArrowRight /> 
+                  </IconButton>
+            </PreviewControlsDiv>
+                                                
+               </ExportCard>
+            </div>
+        </React.Fragment>
+    );
+};
+
+const ExportForm = (props) => {
+   
+    let [enteredImageSize, setEnteredImageSize] = useState(0);
+    let [selectedImageSizer, setSelectedImageSizer] = useState('auto');
+
+    return (
+        <>
+                     { 
                         (selectedImageSizer !== 'auto') &&
                             <input
                                 id="height"
@@ -170,9 +256,21 @@ const ExportsContainer = (props) => {
                                 value={enteredImageSize}
                                 onChange={(e)=>setSelectedImageSizer(e.target.value)}  />
                     }
-                </ExportCard>
-            </div>
-        </React.Fragment>
+        <FormControl component="fieldset">
+            <FormLabel component="legend">PNG Size</FormLabel>
+                <RadioGroup
+                    row
+                    aria-label="PNG Size"
+                    defaultValue="auto"
+                    name="selectedImageSizer"
+                    value={setSelectedImageSizer}
+                    onChange={(e)=>setSelectedImageSizer(e.target.value)}>
+                    <FormControlLabel checked={selectedImageSizer === 'auto'} value="auto" control={<Radio/>} label="Auto" />
+                    <FormControlLabel checked={selectedImageSizer === 'width'} value="width" control={<Radio/>} label="Width" />
+                    <FormControlLabel checked={selectedImageSizer === 'height'} value="height" control={<Radio/>} label="Height" />
+                </RadioGroup>
+        </FormControl>
+        </>
     );
 };
 
