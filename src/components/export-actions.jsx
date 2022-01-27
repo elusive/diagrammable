@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { toBase64, fromBase64 } from 'js-base64';
 import moment from 'moment';
 
@@ -11,19 +11,27 @@ import FormLabel from '@mui/material/FormLabel';
 import SaveAsIcon from '@mui/icons-material/Save';
 
 import Constants from '../constants';
+import { GlobalContext } from '../context/GlobalContext';
 import { CardTitle, ExportCard } from './styled';
 
 
 const ExportsContainer = (props) => {
-    let { code, config, displayName } = props;   
+    let { displayName } = props;   
+    let { code, setCode, config } = useContext(GlobalContext);
     let [enteredImageSize, setEnteredImageSize] = useState(0);
     let [selectedImageSizer, setSelectedImageSizer] = useState('auto');
     let rendererUrl = Constants.MermaindInkUrl;
-    let inkState = { "code": code, "mermaid": config };
-
+    
+    /*     MERMAID.INK USAGE
+     * This format is used by the https://mermaid.ink webapp
+     * and is here so that we can pass the correctly formatted
+     * data to the /svg or /img endpoints to get our images.
+     */
+    let inkState = { "code": code.join('\n'), "mermaid": config };
     useEffect(() => {
         let renderCode = toBase64(JSON.stringify(inkState), true);
         rendererUrl += renderCode;
+        console.log(`rendering url: ${rendererUrl}`);
     }); 
 
 
@@ -72,36 +80,16 @@ const ExportsContainer = (props) => {
 
     const clipboardExporter = (context, image) => {
         return () => {
-                /*
-                const { canvas } = context;
-			    context.drawImage(image, 0, 0, canvas.width, canvas.height);
-                canvas.toBlob((blob) => {
-                    try {
-                        document.body.click(); // document must have focus to use clipboard api
-                        navigator.clipboard.write([
-                            new window.ClipboardItem({
-                                [blob.type]: blob
-                            })
-                        ]);
-                        console.log('Image copied.');
-                    } 
-                    catch (error) {
-                        console.error(error);
-                    }
-                    */  
-            let img = document.createElement("img");
-            document.body.appendChild(img);
-            img.onload = () => {
-                let r = document.createRange();
-                r.setStartBefore(img);
-                r.setEndAfter(img);
-                r.selectNode(img);
-                let sel = window.getSelection();
-                sel.addRange(r);
-                document.execCommand('Copy');
-                document.body.removeChild(img);
-            };
-            img.src = rendererUrl; 
+            let codeDiv = document.createElement("div");
+            document.body.appendChild(codeDiv);
+            codeDiv.innerText = code.join('\n');
+            var r = document.createRange();
+            r.selectNode(codeDiv);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(r);
+            document.execCommand('Copy');
+            window.getSelection().removeAllRanges();
+            document.body.removeChild(codeDiv);
         };        
     };
 
