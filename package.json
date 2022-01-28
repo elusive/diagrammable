@@ -29,7 +29,7 @@
       "last 1 safari version"
     ]
   },
-   "dependencies": {
+  "dependencies": {
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
@@ -43,11 +43,14 @@
     "@testing-library/user-event": "^12.1.10",
     "@trendmicro/react-sidenav": "^0.5.0",
     "codemirror": "^5.58.2",
+    "react-swipeable-views": "^0.13.8",
     "concurrently": "5.2.0",
     "electron": "9.1.1",
     "electron-is-dev": "1.2.0",
     "framer-motion": "^2.9.4",
+    "js-base64": "^3.7.2",
     "mermaid": "^8.8.3",
+    "moment": "^2.29.1",
     "react": "^17.0.1",
     "react-codemirror2": "^7.2.1",
     "react-dom": "^17.0.1",

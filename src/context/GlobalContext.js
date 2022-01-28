@@ -9,7 +9,6 @@ const examples = require('./diagrams.json');
 const flowChartExampleCode = examples.find(d => d.type === 'flow_chart');
 const initialState = {
     code: flowChartExampleCode.code,
-    type: DiagramType.FLOW_CHART,
     config: {
         theme: 'default',
         securityLevel: 'loose',
@@ -18,7 +17,10 @@ const initialState = {
          }
     },
     open: true,
+    type: DiagramType.FLOW_CHART,
 }
+
+
 
 export const GlobalContext = createContext(initialState);
 
