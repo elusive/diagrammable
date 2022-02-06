@@ -1,5 +1,5 @@
 {
-  "name": "rnd-diagrams",
+  "name": "diagrammable",
   "version": "0.1.0",
   "main": "public/electron.js",
   "private": true,
@@ -29,6 +29,34 @@
       "last 1 safari version"
     ]
   },
+  "build": {
+    "appId": "diagrammable",
+    "category": "your.app.category.type",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "build/icon.ico"
+    }
+  },
   "dependencies": {
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
@@ -43,24 +71,25 @@
     "@testing-library/user-event": "^12.1.10",
     "@trendmicro/react-sidenav": "^0.5.0",
     "codemirror": "^5.58.2",
-    "react-swipeable-views": "^0.13.8",
     "concurrently": "5.2.0",
     "electron": "9.1.1",
     "electron-is-dev": "1.2.0",
     "framer-motion": "^2.9.4",
     "js-base64": "^3.7.2",
-    "mermaid": "^8.8.3",
+    "mermaid": "^8.13.10",
     "moment": "^2.29.1",
     "react": "^17.0.1",
     "react-codemirror2": "^7.2.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "react-swipeable-views": "^0.13.8",
     "styled-components": "^5.2.0",
     "wait-on": "5.1.0",
     "web-vitals": "^0.2.4"
   },
   "devDependencies": {
-    "css-spring": "^4.1.0"
+    "css-spring": "^4.1.0",
+    "electron-builder": "^22.14.5"
   }
 }
