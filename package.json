@@ -14,11 +14,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "concurrently -k \"BROWSER=none yarn start\" \"yarn electron\"",
+    "dev": "concurrently -k \"yarn start\" \"yarn electron\"",
     "electron": "wait-on tcp:3000 && electron .",
     "postinstall": "electron-builder install-app-deps",
-    "preelectron-pack": "yarn build",
-    "electron-pack": "build -w" 
+    "electron-pack": "yarn build",
+    "electron-build": "electron-builder --dir",
+    "electron-installer": "electron-builder"
   },
   "eslintConfig": {
     "extends": [
@@ -39,19 +40,23 @@
     ]
   },
   "build": {
-    "appId": "elusive.diagrammable",
-    "icon": "public/diagrammable.ico",
+    "appId": "com.elusive.diagrammable",
+    "icon": "public/icon.ico",
     "copyright": "Copyright © 2019 ${author}",
     "linux": {
       "target": "AppImage"
     },
     "win": {
-      "target": "NSIS"
+      "target": "msi"
     },
     "files": [
       "build/**/*",
       "node_modules/**/*"
-    ]
+    ],
+    "directories": {
+      "buildResources": "build",
+      "app": "build"
+    }
   },
   "dependencies": {
     "@emotion/react": "^11.5.0",
@@ -68,7 +73,8 @@
     "@trendmicro/react-sidenav": "^0.5.0",
     "codemirror": "^5.58.2",
     "concurrently": "5.2.0",
-   "framer-motion": "^2.9.4",
+    "electron-is-dev": "1.2.0",
+    "framer-motion": "^2.9.4",
     "js-base64": "^3.7.2",
     "mermaid": "^8.13.10",
     "moment": "^2.29.1",
@@ -85,7 +91,6 @@
   "devDependencies": {
     "css-spring": "^4.1.0",
     "electron": "9.1.1",
-    "electron-is-dev": "1.2.0",
     "electron-builder": "^22.14.5"
   }
 }
