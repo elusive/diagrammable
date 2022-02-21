@@ -8,6 +8,7 @@
     "url": "git+https://github.com/elusive/diagrammable.git"
   },
   "main": "public/electron.js",
+  "homepage": "./",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
@@ -19,7 +20,10 @@
     "postinstall": "electron-builder install-app-deps",
     "electron-pack": "yarn build",
     "electron-build": "electron-builder --dir",
-    "electron-installer": "electron-builder"
+    "electron-installer": "electron-builder",
+    "electron:package:mac": "yarn build && electron-builder -m -c.extraMetadata.main=build/electron.js",
+    "electron:package:win": "yarn build && electron-builder -w -c.extraMetadata.main=build/electron.js",
+    "electron:package:linux": "yarn build && electron-builder -l -c.extraMetadata.main=build/electron.js"
   },
   "eslintConfig": {
     "extends": [
@@ -29,33 +33,34 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "last 1 electron version"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 electron version"
     ]
   },
   "build": {
-    "appId": "com.elusive.diagrammable",
-    "icon": "public/icon.ico",
-    "copyright": "Copyright © 2019 ${author}",
+    "appId": "com.electron.diagrammable",
+    "productName": "diagrammable",
     "linux": {
       "target": "AppImage"
     },
     "win": {
-      "target": "msi"
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis" : {
+      "oneClick": "true",
+      "perMachine": "true"
     },
     "files": [
       "build/**/*",
       "node_modules/**/*"
     ],
     "directories": {
-      "buildResources": "build",
-      "app": "build"
+      "buildResources": "build"
     }
   },
   "dependencies": {
