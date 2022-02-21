@@ -18,8 +18,6 @@
     "dev": "concurrently -k \"yarn start\" \"yarn electron\"",
     "electron": "wait-on tcp:3000 && electron .",
     "postinstall": "electron-builder install-app-deps",
-    "electron-pack": "yarn build",
-    "electron-build": "electron-builder --dir",
     "electron-installer": "electron-builder",
     "electron:package:mac": "yarn build && electron-builder -m -c.extraMetadata.main=build/electron.js",
     "electron:package:win": "yarn build && electron-builder -w -c.extraMetadata.main=build/electron.js",
