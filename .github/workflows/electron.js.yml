@@ -13,7 +13,7 @@ jobs:
   build-on-windows:  
     runs-on: windows-2016
     steps:    
-    - name: Checkout Source
+    - name: Checkout source
       uses: actions/checkout@v2
       with: 
         ref: electron
@@ -22,12 +22,13 @@ jobs:
       with:
         node-version: 16.x
         cache: 'yarn'
+    - name: Build electron package
       run: yarn electron:package:win
 
   build-on-linux:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Source
+    - name: Checkout source
       uses: actions/checkout@v2
       with:
         ref: electron
