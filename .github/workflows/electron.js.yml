@@ -13,28 +13,29 @@ jobs:
   build-on-windows:  
     runs-on: windows-2016
     steps:    
-    - uses: actions/checkout@v2
+    - name: Checkout Source
+      uses: actions/checkout@v2
       with: 
         ref: electron
-    - name: Use Node.js 16.x
+    - name: Setup Node/Yarn 
       uses: actions/setup-node@v2
       with:
         node-version: 16.x
         cache: 'yarn'
-    - run: yarn electron:package:win
+      run: yarn electron:package:win
 
   build-on-linux:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout source
-    - uses: actions/checkout@v2
+    - name: Checkout Source
+      uses: actions/checkout@v2
       with:
         ref: electron
     - name: Setup Node/Yarn
-    - uses: actions/setup-node@v2
+      uses: actions/setup-node@v2
       with:
         node-version: 16.x
         cache: 'yarn'
     - name: Build electron package  
-    - run: yarn electron:package:linux
+      run: yarn electron:package:linux
    
