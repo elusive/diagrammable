@@ -23,6 +23,7 @@ jobs:
         cache: 'yarn'
 
     - name: Build electron package
+      run: yarn install
       run: yarn electron:package:win
 
   build-on-linux:
@@ -38,5 +39,6 @@ jobs:
         cache: 'yarn'
 
     - name: Build electron package  
+      run: yarn install
       run: yarn electron:package:linux
    
