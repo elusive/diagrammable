@@ -12,6 +12,9 @@ on:
 jobs:
   build-on-windows:  
     runs-on: windows-2016
+    env:
+      CSC_LINK: ${{ secrets.WINDOWS_PFX }}
+      CSC_PASSWORD: ${{ secrets.WINDOWS_PFX_PASSWORD }}
     steps:    
     - name: Checkout source
       uses: actions/checkout@v2
@@ -46,3 +49,8 @@ jobs:
     - name: Build electron package  
       run: yarn electron:package:linux
    
+    - name: Archive code coverage results
+        uses: actions/upload-artifact@v2
+        with:
+          name: code-coverage-report
+          path: output/test/code-coverage.html
