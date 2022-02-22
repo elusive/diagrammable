@@ -1,6 +1,7 @@
 
 ![diagrammable logo](public/diagrammable_title.png)
 
+[![.github/workflows/electron.js.yml](https://github.com/elusive/diagrammable/actions/workflows/electron.js.yml/badge.svg?branch=main)](https://github.com/elusive/diagrammable/actions/workflows/electron.js.yml)
 # Getting Started with Diagrammable
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). The main 
