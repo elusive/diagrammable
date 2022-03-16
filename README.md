@@ -72,8 +72,7 @@ The process of compiling and packaging the application has been somewhat simplif
 
     ```
     yarn build
-    yarn electron-pack
-    yarn electron-installer
+    yarn electron:package:[win|mac|linux]
     ```
 
 ## Learn More
