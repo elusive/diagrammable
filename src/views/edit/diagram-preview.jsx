@@ -6,10 +6,7 @@ import Constants from '../../constants';
 const DiagramPreview = (props) => {
     const { 
         code,
-        type,
         config,
-        displayName,
-        onChange
     } = props;
     
     let element;
@@ -25,7 +22,7 @@ const DiagramPreview = (props) => {
             _code = _code.replace(/</g, '&lt;');
             _code = _code.replace(/>/g, '&gt;');
             mermaid.initialize(config);
-            mermaid.render("graph-div", code, insertSvg);
+            mermaid.render("graph-div", _code, insertSvg);
         }
         catch(e) {
             console.log(`View fail: ${e.message}`);

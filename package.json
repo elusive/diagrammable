@@ -43,20 +43,20 @@
     },
     "win": {
       "target": [
-        "nsis",
-        "portable"
+        "msi"
       ]
     },
     "nsis" : {
       "oneClick": "true",
-      "perMachine": "true"
+      "perMachine": "false"
     },
     "files": [
       "build/**/*",
       "node_modules/**/*"
     ],
     "directories": {
-      "buildResources": "build"
+      "buildResources": "build",
+      "output": "dist"
     }
   },
   "dependencies": {
