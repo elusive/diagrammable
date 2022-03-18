@@ -24,6 +24,8 @@ jobs:
         cache: 'yarn'
     - name: Build electron package
       run: yarn electron:package:win
+      env:
+         CI: false
 
   build-on-linux:
     runs-on: ubuntu-latest
