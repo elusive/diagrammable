@@ -1,5 +1,6 @@
 [
   {
+    "id": 101,
     "name":"Flowchart",
     "type":"flow_chart",
     "code": [
@@ -11,6 +12,7 @@
     ]
   },
   {
+    "id": 102,
     "name":"Class Diagram",
     "type":"class_diagram",
     "code": [
@@ -38,6 +40,7 @@
     ]
   },
   {
+    "id": 103,
     "name": "Sequence Diagram",
     "type":"sequence_diagram",
     "code":[
@@ -49,6 +52,7 @@
     ]
   },
   {
+    "id": 104,
     "name": "ER Diagram",
     "type": "entity_relationship",
     "code": [
@@ -64,6 +68,7 @@
     ]
   },
   {
+    "id": 105,
     "name": "State Diagram",
     "type": "state_diagram",
     "code": [
@@ -77,6 +82,7 @@
     ]
   },
   {
+    "id": 106,
     "name": "Gantt Chart",
     "type": "gantt_diagram",
     "code": [
@@ -92,6 +98,7 @@
     ]
   },
   {
+    "id": 107,
       "name": "Pie Chart",
       "type": "pie_chart",
       "code": [
@@ -102,6 +109,7 @@
       ]
   },
   {
+      "id": 108,
       "name": "User Journey",
       "type": "user_journey",
       "code": [

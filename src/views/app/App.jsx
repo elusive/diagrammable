@@ -25,7 +25,10 @@ function App() {
             <Route path="/select" component={views.Select} />
             <Route path="/edit" component={views.Edit} />
             <Route path="/guide" component={views.Guide} />
-            <Redirect from="*" to="/" /> 
+            <Route exact path="/">
+              <Redirect to="/select" />
+            </Route>
+            <Redirect from="*" to="/" />
           </Switch>
       </ThemeProvider>
     </GlobalContextProvider>

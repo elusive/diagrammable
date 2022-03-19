@@ -4,25 +4,25 @@ import Constants from '../../constants';
 
 
 const DiagramPreview = (props) => {
-    const { 
+    const {
         code,
         config,
     } = props;
-    
+
     let element;
-    
-    const insertSvg = (svg) => { 
+
+    const insertSvg = (svg) => {
         element = document.querySelector("#svgContainer");
-        element.innerHTML = svg; 
+        element.innerHTML = svg;
     };
-    
+
     useEffect(() => {
         try {
             let _code = code;
             _code = _code.replace(/</g, '&lt;');
             _code = _code.replace(/>/g, '&gt;');
             mermaid.initialize(config);
-            mermaid.render("graph-div", _code, insertSvg);
+            mermaid.render("graph-div", code, insertSvg);
         }
         catch(e) {
             console.log(`View fail: ${e.message}`);
