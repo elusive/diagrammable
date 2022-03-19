@@ -50,3 +50,5 @@ jobs:
 
     - name: Build electron package
       run: yarn electron:package:linux
+        env:
+          CI: false
