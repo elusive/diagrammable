@@ -46,7 +46,7 @@
         "msi"
       ]
     },
-    "nsis" : {
+    "nsis": {
       "oneClick": "true",
       "perMachine": "false"
     },
@@ -93,5 +93,6 @@
     "css-spring": "^4.1.0",
     "electron": "9.1.1",
     "electron-builder": "^22.14.5"
-  }
+  },
+  "packageManager": "yarn@3.2.0"
 }
