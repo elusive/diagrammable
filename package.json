@@ -17,10 +17,8 @@
     "eject": "react-scripts eject",
     "dev": "concurrently -k \"yarn start\" \"yarn electron\"",
     "electron": "wait-on tcp:3000 && electron .",
-    "postinstall": "electron-builder install-app-deps",
-    "electron-installer": "electron-builder",
     "electron:package:mac": "yarn build && electron-builder -m -c.extraMetadata.main=build/electron.js",
-    "electron:package:win": "yarn build && electron-builder -w -c.extraMetadata.main=build/electron.js",
+    "electron:package:win": "yarn build && CI=false && electron-builder -w -c.extraMetadata.main=build/electron.js",
     "electron:package:linux": "yarn build && electron-builder -l -c.extraMetadata.main=build/electron.js"
   },
   "eslintConfig": {
@@ -45,20 +43,20 @@
     },
     "win": {
       "target": [
-        "nsis",
-        "portable"
+        "msi"
       ]
     },
-    "nsis" : {
+    "nsis": {
       "oneClick": "true",
-      "perMachine": "true"
+      "perMachine": "false"
     },
     "files": [
       "build/**/*",
       "node_modules/**/*"
     ],
     "directories": {
-      "buildResources": "build"
+      "buildResources": "build",
+      "output": "dist"
     }
   },
   "dependencies": {
@@ -95,5 +93,6 @@
     "css-spring": "^4.1.0",
     "electron": "9.1.1",
     "electron-builder": "^22.14.5"
-  }
+  },
+  "packageManager": "yarn@3.2.0"
 }

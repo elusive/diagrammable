@@ -4,21 +4,18 @@ import Constants from '../../constants';
 
 
 const DiagramPreview = (props) => {
-    const { 
+    const {
         code,
-        type,
         config,
-        displayName,
-        onChange
     } = props;
-    
+
     let element;
-    
-    const insertSvg = (svg) => { 
+
+    const insertSvg = (svg) => {
         element = document.querySelector("#svgContainer");
-        element.innerHTML = svg; 
+        element.innerHTML = svg;
     };
-    
+
     useEffect(() => {
         try {
             let _code = code;

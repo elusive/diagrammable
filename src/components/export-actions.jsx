@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { toBase64, fromBase64 } from 'js-base64';
+import { toBase64 } from 'js-base64';
 import moment from 'moment';
 
 import Button from '@mui/material/Button';
@@ -13,7 +13,7 @@ import CopyIcon from '@mui/icons-material/ContentCopy';
 
 import Constants from '../constants';
 import { GlobalContext } from '../context/GlobalContext';
-import { CardTitle, ExportCard } from './styled';
+import { ExportCard } from './styled';
 import IconButton from '@mui/material/IconButton';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
 import ZoomOutIcon from '@mui/icons-material/ZoomOut';
@@ -29,10 +29,8 @@ import {
 
 const ExportsContainer = (props) => {
     let { displayName } = props;   
-    let { code, setCode, config } = useContext(GlobalContext);
-    
-    let rendererUrl = Constants.MermaindInkUrl;
-    
+    let { code, config } = useContext(GlobalContext);
+            
     /*     MERMAID.INK USAGE
      * This format is used by the https://mermaid.ink webapp
      * and is here so that we can pass the correctly formatted
@@ -41,7 +39,7 @@ const ExportsContainer = (props) => {
     let inkState = { "code": code.join('\n'), "mermaid": config };
     useEffect(() => {
         let renderCode = toBase64(JSON.stringify(inkState), true);
-        rendererUrl += renderCode;
+        let rendererUrl = Constants.MermaindInkUrl + renderCode;
         console.log(`rendering url: ${rendererUrl}`);
     }); 
 
@@ -142,8 +140,8 @@ const ExportsContainer = (props) => {
       const svg = document.getElementById(Constants.SvgId);
       const { scale, x, y } = getTransformParameters(svg);
       let dScale = 0.1;
-      if (direction == "out") dScale *= -1;
-      if (scale == 0.1 && direction == "out") dScale = 0;
+      if (direction === "out") dScale *= -1;
+      if (scale === 0.1 && direction === "out") dScale = 0;
       svg.style.transform = getTransformString(scale + dScale, x, y);
     };
 
@@ -182,6 +180,8 @@ const ExportsContainer = (props) => {
         case "down":
           dy = 3;
           break;
+        default:
+            break;
       }
       svg.style.transform = getTransformString(scale, x + dx, y + dy);
     };
@@ -238,6 +238,7 @@ const ExportsContainer = (props) => {
     );
 };
 
+/*
 const ExportForm = (props) => {
    
     let [enteredImageSize, setEnteredImageSize] = useState(0);
@@ -245,17 +246,17 @@ const ExportForm = (props) => {
 
     return (
         <>
-                     { 
-                        (selectedImageSizer !== 'auto') &&
-                            <input
-                                id="height"
-                                className="input"
-                                type="number"
-                                min="3"
-                                max="10000"
-                                value={enteredImageSize}
-                                onChange={(e)=>setSelectedImageSizer(e.target.value)}  />
-                    }
+          { 
+            (selectedImageSizer !== 'auto') &&
+                <input
+                    id="height"
+                    className="input"
+                    type="number"
+                    min="3"
+                    max="10000"
+                    value={enteredImageSize}
+                    onChange={(e)=>setSelectedImageSizer(e.target.value)}  />
+        }
         <FormControl component="fieldset">
             <FormLabel component="legend">PNG Size</FormLabel>
                 <RadioGroup
@@ -273,5 +274,5 @@ const ExportForm = (props) => {
         </>
     );
 };
-
+*/
 export default ExportsContainer;

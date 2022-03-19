@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -19,13 +19,13 @@ function a11yProps(index) {
     };
 }
 
-const Select = (props) => {
+const Select = () => {
 
     const [value, setValue] = React.useState(0);
-    
+
     const theme = useTheme();
-   
-    const handleTabChanged = (event, newValue) => {
+
+    const handleTabChanged = (_, newValue) => {
         setValue(newValue);
     };
     const handleIndexChanged = (newIndex) => {
@@ -39,11 +39,11 @@ const Select = (props) => {
                 <Typography variant="h5" component="div" gutterBottom>
                     Select the type of Diagram to Build:
                 </Typography>
-                <Tabs value={value} onChange={handleTabChanged} 
+                <Tabs value={value} onChange={handleTabChanged}
                     textColor="secondary" indicatorColor="secondary"
                     aria-label="Diagram Type Selection">
-                    { diagrams.map((d, i) => 
-                        (<Tab label={d.name} {...a11yProps(i)} />)) }
+                    { diagrams.map((d, i) =>
+                        (<Tab key={d.id} label={d.name} {...a11yProps(i)} />)) }
                 </Tabs>
                 <SwipeableViews
                     axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -51,9 +51,9 @@ const Select = (props) => {
                     onChangeIndex={handleIndexChanged}
                 >
                     { diagrams.map((diagram, index) => (
-                        <SelectionTabPanel 
-                            key={index} index={index} 
-                            value={value} 
+                        <SelectionTabPanel
+                            key={index} index={index}
+                            value={value}
                             dir={theme.direction}>
                             <CodeContainer>{diagram.code.join('\n')}</CodeContainer>
                             <PreviewStatic type={diagram.type} />

@@ -51,7 +51,7 @@ export default function SideMenu(props) {
     top: false,
     bottom: false
   });
-  const [anchor, setAnchor] = React.useState(props.anchor)
+  const [anchor] = React.useState(props.anchor)
   
 
   const toggleDrawer = (open) => (event) => {
