@@ -13,7 +13,7 @@ jobs:
   build-on-windows:
     runs-on: windows-2022
     env:
-      CSC_LINK: signing.pfx
+      CSC_LINK: ${{ secrets.WINDOWS_PFX }}
       CSC_PASSWORD: ${{ secrets.WINDOWS_PFX_PASSWORD }}
     steps:
     - name: Checkout source
@@ -23,13 +23,13 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: 16.x
-        cache: 'yarn'
+        cache: 'npm'
 
     - name: Install dependencies
-      run: yarn install
+      run: npm install
 
     - name: Build electron package
-      run: yarn electron:package:win
+      run: npm run electron:package:win
       env:
          CI: false
 
@@ -43,12 +43,12 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: 16.x
-        cache: 'yarn'
+        cache: 'npm'
 
     - name: Install dependencies
-      run: yarn install
+      run: npm install
 
     - name: Build electron package
-      run: yarn electron:package:linux
+      run: npm run electron:package:linux
       env:
         CI: false

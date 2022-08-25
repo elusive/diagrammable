@@ -1,0 +1,5 @@
+/home/jogi/work/elusive/diagrammable/tools/word-add-diagram/obj/Debug/netcoreapp3.1/word-add-diagram.csproj.AssemblyReference.cache
+/home/jogi/work/elusive/diagrammable/tools/word-add-diagram/obj/Debug/netcoreapp3.1/word-add-diagram.GeneratedMSBuildEditorConfig.editorconfig
+/home/jogi/work/elusive/diagrammable/tools/word-add-diagram/obj/Debug/netcoreapp3.1/word-add-diagram.AssemblyInfoInputs.cache
+/home/jogi/work/elusive/diagrammable/tools/word-add-diagram/obj/Debug/netcoreapp3.1/word-add-diagram.AssemblyInfo.cs
+/home/jogi/work/elusive/diagrammable/tools/word-add-diagram/obj/Debug/netcoreapp3.1/word-add-diagram.csproj.CoreCompileInputs.cache
