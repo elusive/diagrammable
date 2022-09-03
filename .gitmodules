@@ -1,0 +1,3 @@
+[submodule "tools/word-add-image"]
+	path = tools/word-add-image
+	url = https://github.com/elusive/word-add-image.git
