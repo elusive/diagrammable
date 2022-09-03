@@ -3,11 +3,6 @@ import { toBase64 } from 'js-base64';
 import moment from 'moment';
 
 import Button from '@mui/material/Button';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
 import SaveAsIcon from '@mui/icons-material/Save';
 import CopyIcon from '@mui/icons-material/ContentCopy';
 
@@ -28,9 +23,9 @@ import {
 
 
 const ExportsContainer = (props) => {
-    let { displayName } = props;   
+    let { displayName } = props;
     let { code, config } = useContext(GlobalContext);
-            
+
     /*     MERMAID.INK USAGE
      * This format is used by the https://mermaid.ink webapp
      * and is here so that we can pass the correctly formatted
@@ -41,7 +36,7 @@ const ExportsContainer = (props) => {
         let renderCode = toBase64(JSON.stringify(inkState), true);
         let rendererUrl = Constants.MermaindInkUrl + renderCode;
         console.log(`rendering url: ${rendererUrl}`);
-    }); 
+    });
 
 
     /* Exporting Functions
@@ -99,7 +94,7 @@ const ExportsContainer = (props) => {
             document.execCommand('Copy');
             window.getSelection().removeAllRanges();
             document.body.removeChild(codeDiv);
-        };        
+        };
     };
 
     const downloadImageExporter = (context, image) => {
@@ -159,7 +154,7 @@ const ExportsContainer = (props) => {
       return { scale, x, y };
     };
 
-    const getTransformString = (scale, x, y) => "scale(" + scale + 
+    const getTransformString = (scale, x, y) => "scale(" + scale +
         ") translateX(" + x + "%) translateY(" + y + "%)";
 
     const pan = (direction) => {
@@ -194,7 +189,7 @@ const ExportsContainer = (props) => {
                     <div id="export-buttons">
                     {
                         isClipboardSupported() &&
-                        <Button id="copy-png-button" 
+                        <Button id="copy-png-button"
                             onClick={(e) => onCopyToClipboardClick(e) }>
                             Copy Code&nbsp; <CopyIcon />
                         </Button>
@@ -214,65 +209,28 @@ const ExportsContainer = (props) => {
                 </IconButton>
                  <IconButton style={{ padding: 0 }} ccolor="primary" aria-label="Pan Left" component="span"
                     onClick={() => pan("left")}>
-                    <KeyboardArrowLeft /> 
+                    <KeyboardArrowLeft />
                  </IconButton>
                  <PreviewControlsDirectionals>
                      <IconButton style={{ padding: 0, margin: "-4px" }} ccolor="primary" aria-label="Pan Up" component="span"
                       onClick={() => pan("up")}>
-                        <KeyboardArrowUp /> 
+                        <KeyboardArrowUp />
                     </IconButton>
                      <IconButton style={{ padding: 0, margin: "-4px" }} ccolor="primary" aria-label="Pan Down" component="span"
                       onClick={() => pan("down")}>
-                        <KeyboardArrowDown sx={{fontSize:24}} /> 
+                        <KeyboardArrowDown sx={{fontSize:24}} />
                     </IconButton>
                  </PreviewControlsDirectionals>
                   <IconButton sx={{ padding: 0 }} ccolor="primary" aria-label="Pan Right" component="span"
                      onClick={() => pan("right")}>
-                        <KeyboardArrowRight /> 
+                        <KeyboardArrowRight />
                   </IconButton>
             </PreviewControlsDiv>
-                                                
+
                </ExportCard>
             </div>
         </React.Fragment>
     );
 };
 
-/*
-const ExportForm = (props) => {
-   
-    let [enteredImageSize, setEnteredImageSize] = useState(0);
-    let [selectedImageSizer, setSelectedImageSizer] = useState('auto');
-
-    return (
-        <>
-          { 
-            (selectedImageSizer !== 'auto') &&
-                <input
-                    id="height"
-                    className="input"
-                    type="number"
-                    min="3"
-                    max="10000"
-                    value={enteredImageSize}
-                    onChange={(e)=>setSelectedImageSizer(e.target.value)}  />
-        }
-        <FormControl component="fieldset">
-            <FormLabel component="legend">PNG Size</FormLabel>
-                <RadioGroup
-                    row
-                    aria-label="PNG Size"
-                    defaultValue="auto"
-                    name="selectedImageSizer"
-                    value={setSelectedImageSizer}
-                    onChange={(e)=>setSelectedImageSizer(e.target.value)}>
-                    <FormControlLabel checked={selectedImageSizer === 'auto'} value="auto" control={<Radio/>} label="Auto" />
-                    <FormControlLabel checked={selectedImageSizer === 'width'} value="width" control={<Radio/>} label="Width" />
-                    <FormControlLabel checked={selectedImageSizer === 'height'} value="height" control={<Radio/>} label="Height" />
-                </RadioGroup>
-        </FormControl>
-        </>
-    );
-};
-*/
 export default ExportsContainer;
