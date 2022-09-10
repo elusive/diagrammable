@@ -17,9 +17,9 @@
     "eject": "react-scripts eject",
     "dev": "concurrently -k \"npm start\" \"npm run electron\"",
     "electron": "wait-on tcp:3000 && electron .",
-    "electron:package:mac": "npm build && electron-builder -m -c.extraMetadata.main=build/electron.js",
-    "electron:package:win": "npm build && CI=false && electron-builder -w -c.extraMetadata.main=build/electron.js",
-    "electron:package:linux": "npm build && electron-builder -l -c.extraMetadata.main=build/electron.js"
+    "electron:package:mac": "npm run build && electron-builder -m -c.extraMetadata.main=build/electron.js",
+    "electron:package:win": "npm run build && CI=false && electron-builder -w -c.extraMetadata.main=build/electron.js",
+    "electron:package:linux": "npm run build && electron-builder -l -c.extraMetadata.main=build/electron.js"
   },
   "eslintConfig": {
     "extends": [
