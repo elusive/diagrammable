@@ -98,17 +98,6 @@ const ExportsContainer = (props) => {
     };
   };
 
-  const downloadImageExporter = (context, image) => {
-    return () => {
-      const { canvas } = context;
-      context.drawImage(image, 0, 0, canvas.width, canvas.height);
-      simulateDownload(
-        `${Constants.DownloadPrefix}-${displayName}-${moment().format('YYYYMMDDHHmmss')}.png`,
-        canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
-      );
-    };
-  };
-
   const simulateDownload = (download, href) => {
     const a = document.createElement('a');
     a.download = download;
@@ -168,6 +157,7 @@ const ExportsContainer = (props) => {
     svg.style.transform = getTransformString(scale + dScale, x, y);
   };
 
+<<<<<<< HEAD
   const getTransformParameters = (element) => {
     const transform = element.style.transform;
     let scale = 1,
@@ -181,6 +171,10 @@ const ExportsContainer = (props) => {
       y = parseInt(transform.slice(transform.indexOf("translateY") + 11));
     return { scale, x, y };
   };
+=======
+    const getTransformString = (scale, x, y) => "scale(" + scale +
+        ") translateX(" + x + "%) translateY(" + y + "%)";
+>>>>>>> cce4a28a4501f291934907798e4493f47ccc4342
 
   const getTransformString = (scale, x, y) => "scale(" + scale +
     ") translateX(" + x + "%) translateY(" + y + "%)";
@@ -210,6 +204,7 @@ const ExportsContainer = (props) => {
   };
 
 
+<<<<<<< HEAD
   return (
     <React.Fragment>
       <div id="exportActions">
@@ -259,43 +254,57 @@ const ExportsContainer = (props) => {
       </div>
     </React.Fragment>
   );
-};
-
-/*
-const ExportForm = (props) => {
-   
-    let [enteredImageSize, setEnteredImageSize] = useState(0);
-    let [selectedImageSizer, setSelectedImageSizer] = useState('auto');
-
+=======
     return (
-        <>
-          { 
-            (selectedImageSizer !== 'auto') &&
-                <input
-                    id="height"
-                    className="input"
-                    type="number"
-                    min="3"
-                    max="10000"
-                    value={enteredImageSize}
-                    onChange={(e)=>setSelectedImageSizer(e.target.value)}  />
-        }
-        <FormControl component="fieldset">
-            <FormLabel component="legend">PNG Size</FormLabel>
-                <RadioGroup
-                    row
-                    aria-label="PNG Size"
-                    defaultValue="auto"
-                    name="selectedImageSizer"
-                    value={setSelectedImageSizer}
-                    onChange={(e)=>setSelectedImageSizer(e.target.value)}>
-                    <FormControlLabel checked={selectedImageSizer === 'auto'} value="auto" control={<Radio/>} label="Auto" />
-                    <FormControlLabel checked={selectedImageSizer === 'width'} value="width" control={<Radio/>} label="Width" />
-                    <FormControlLabel checked={selectedImageSizer === 'height'} value="height" control={<Radio/>} label="Height" />
-                </RadioGroup>
-        </FormControl>
-        </>
+        <React.Fragment>
+            <div id="exportActions">
+                <ExportCard>
+                    <div id="export-buttons">
+                    {
+                        isClipboardSupported() &&
+                        <Button id="copy-png-button"
+                            onClick={(e) => onCopyToClipboardClick(e) }>
+                            Copy Code&nbsp; <CopyIcon />
+                        </Button>
+                    }
+                        <Button id="export-png-button" onClick={(e) => onDownloadPngClick(e) }>
+                            Save Image&nbsp;<SaveAsIcon/>
+                        </Button>
+                    </div>
+              <PreviewControlsDiv>
+                  <IconButton style={{ padding: 0 }} color="primary" aria-label="Zoom In" component="span"
+                  onClick={() => zoom("in")}>
+                  <ZoomInIcon sx={{fontSize:30}} />
+                </IconButton>
+                <IconButton style={{ padding: 0 }} ccolor="primary" aria-label="Zoom Out" component="span"
+                  onClick={() => zoom("out")}>
+                    <ZoomOutIcon sx={{fontSize:30}} />
+                </IconButton>
+                 <IconButton style={{ padding: 0 }} ccolor="primary" aria-label="Pan Left" component="span"
+                    onClick={() => pan("left")}>
+                    <KeyboardArrowLeft />
+                 </IconButton>
+                 <PreviewControlsDirectionals>
+                     <IconButton style={{ padding: 0, margin: "-4px" }} ccolor="primary" aria-label="Pan Up" component="span"
+                      onClick={() => pan("up")}>
+                        <KeyboardArrowUp />
+                    </IconButton>
+                     <IconButton style={{ padding: 0, margin: "-4px" }} ccolor="primary" aria-label="Pan Down" component="span"
+                      onClick={() => pan("down")}>
+                        <KeyboardArrowDown sx={{fontSize:24}} />
+                    </IconButton>
+                 </PreviewControlsDirectionals>
+                  <IconButton sx={{ padding: 0 }} ccolor="primary" aria-label="Pan Right" component="span"
+                     onClick={() => pan("right")}>
+                        <KeyboardArrowRight />
+                  </IconButton>
+            </PreviewControlsDiv>
+
+               </ExportCard>
+            </div>
+        </React.Fragment>
     );
+>>>>>>> cce4a28a4501f291934907798e4493f47ccc4342
 };
-*/
+
 export default ExportsContainer;
