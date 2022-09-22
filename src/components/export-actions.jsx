@@ -16,12 +16,10 @@ import KeyboardArrowUp from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import SVGToImage from './svg-converter';
 import {
   PreviewControlsDirectionals,
   PreviewControlsDiv
 } from './styled';
-import faBase64 from '../mermaid-language/font-awesome-base64';
 
 const ExportsContainer = (props) => {
   let { displayName } = props;
@@ -83,6 +81,17 @@ const ExportsContainer = (props) => {
     evt.preventDefault();
   };
 
+  const downloadImageExporter = (context, image) => {
+    return () => {
+      const { canvas } = context;
+      context.drawImage(image, 0, 0, canvas.width, canvas.height);
+      simulateDownload(
+        `${Constants.DownloadPrefix}-${displayName}-${moment().format('YYYYMMDDHHmmss')}.png`,
+        canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
+      );
+    };
+  };
+
   const clipboardExporter = (context, image) => {
     return () => {
       let codeDiv = document.createElement("div");
@@ -112,35 +121,8 @@ const ExportsContainer = (props) => {
 
   // event handlers
   const onDownloadPngClick = (evt) => {
-    // get svg element
-    var diagramSvg = document.querySelector(`#${Constants.SvgId}`);
-    diagramSvg = faBase64(diagramSvg);
-    console.log(diagramSvg.outerHTML);
-
-    SVGToImage({
-      svg: diagramSvg,
-      mimetype: "image/png",
-      // 3. Provide the dimensions of the image if you want a specific size.
-      //  - if they remain in auto, the width and height attribute of the svg will be used
-      //  - You can provide a single dimension and the other one will be automatically calculated
-      width: "auto",
-      height: "auto",
-      // 4. Specify the quality of the image
-      quality: 1,
-      // 5. Define the format of the output (base64 or blob)
-      outputFormat: "base64"
-    }).then(function(outputData) {
-      // If using base64 (outputs a DataURL)
-      //  data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0...
-      // Or with Blob (Blob)
-      //  Blob {size: 14353, type: "image/png"}
-      simulateDownload(`${Constants.DownloadPrefix}-${displayName}-${moment().format('YYYYMMDDHHmmss')}.png`, outputData)
-      console.log(outputData);
-    }).catch(function(err) {
-      // Log any error
-      console.log(err);
-    });
-  };
+    exportDiagramToImage(evt, downloadImageExporter);
+  }
 
   const onCopyToClipboardClick = (evt) => {
     exportDiagramToImage(evt, clipboardExporter);
@@ -157,7 +139,6 @@ const ExportsContainer = (props) => {
     svg.style.transform = getTransformString(scale + dScale, x, y);
   };
 
-<<<<<<< HEAD
   const getTransformParameters = (element) => {
     const transform = element.style.transform;
     let scale = 1,
@@ -171,10 +152,6 @@ const ExportsContainer = (props) => {
       y = parseInt(transform.slice(transform.indexOf("translateY") + 11));
     return { scale, x, y };
   };
-=======
-    const getTransformString = (scale, x, y) => "scale(" + scale +
-        ") translateX(" + x + "%) translateY(" + y + "%)";
->>>>>>> cce4a28a4501f291934907798e4493f47ccc4342
 
   const getTransformString = (scale, x, y) => "scale(" + scale +
     ") translateX(" + x + "%) translateY(" + y + "%)";
@@ -203,8 +180,6 @@ const ExportsContainer = (props) => {
     svg.style.transform = getTransformString(scale, x + dx, y + dy);
   };
 
-
-<<<<<<< HEAD
   return (
     <React.Fragment>
       <div id="exportActions">
@@ -254,57 +229,6 @@ const ExportsContainer = (props) => {
       </div>
     </React.Fragment>
   );
-=======
-    return (
-        <React.Fragment>
-            <div id="exportActions">
-                <ExportCard>
-                    <div id="export-buttons">
-                    {
-                        isClipboardSupported() &&
-                        <Button id="copy-png-button"
-                            onClick={(e) => onCopyToClipboardClick(e) }>
-                            Copy Code&nbsp; <CopyIcon />
-                        </Button>
-                    }
-                        <Button id="export-png-button" onClick={(e) => onDownloadPngClick(e) }>
-                            Save Image&nbsp;<SaveAsIcon/>
-                        </Button>
-                    </div>
-              <PreviewControlsDiv>
-                  <IconButton style={{ padding: 0 }} color="primary" aria-label="Zoom In" component="span"
-                  onClick={() => zoom("in")}>
-                  <ZoomInIcon sx={{fontSize:30}} />
-                </IconButton>
-                <IconButton style={{ padding: 0 }} ccolor="primary" aria-label="Zoom Out" component="span"
-                  onClick={() => zoom("out")}>
-                    <ZoomOutIcon sx={{fontSize:30}} />
-                </IconButton>
-                 <IconButton style={{ padding: 0 }} ccolor="primary" aria-label="Pan Left" component="span"
-                    onClick={() => pan("left")}>
-                    <KeyboardArrowLeft />
-                 </IconButton>
-                 <PreviewControlsDirectionals>
-                     <IconButton style={{ padding: 0, margin: "-4px" }} ccolor="primary" aria-label="Pan Up" component="span"
-                      onClick={() => pan("up")}>
-                        <KeyboardArrowUp />
-                    </IconButton>
-                     <IconButton style={{ padding: 0, margin: "-4px" }} ccolor="primary" aria-label="Pan Down" component="span"
-                      onClick={() => pan("down")}>
-                        <KeyboardArrowDown sx={{fontSize:24}} />
-                    </IconButton>
-                 </PreviewControlsDirectionals>
-                  <IconButton sx={{ padding: 0 }} ccolor="primary" aria-label="Pan Right" component="span"
-                     onClick={() => pan("right")}>
-                        <KeyboardArrowRight />
-                  </IconButton>
-            </PreviewControlsDiv>
-
-               </ExportCard>
-            </div>
-        </React.Fragment>
-    );
->>>>>>> cce4a28a4501f291934907798e4493f47ccc4342
 };
 
 export default ExportsContainer;
