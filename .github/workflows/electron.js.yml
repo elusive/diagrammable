@@ -11,6 +11,7 @@ on:
 
 jobs:
   build-on-windows:
+    environment: production
     runs-on: windows-2022
     env:
       WIN_CSC_LINK: ${{ secrets.WINDOWS_PFX }}
@@ -34,6 +35,7 @@ jobs:
          CI: false
 
   build-on-linux:
+    environment: production
     runs-on: ubuntu-latest
     steps:
     - name: Checkout source
