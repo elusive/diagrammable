@@ -6,28 +6,27 @@ import Constants from '../constants';
 const diagrams = require('../context/diagrams.json');
 
 const PreviewStatic = (props) => {
-    const { type } = props;
-    const {config} = useContext(GlobalContext); 
-    
-    let element;
-    const insertSvg = (svg) => { 
-        element = document.querySelector("#svgContainer");
-        element.innerHTML = svg; 
-    };
-   
+  const { type } = props;
+  const { config } = useContext(GlobalContext);
 
-    let diagram = diagrams.find(d => d.type === type);
-    
-    useEffect(() => {
-            mermaid.initialize(config);
-            mermaid.render("graph-div", diagram.code.join('\n'), insertSvg);
-    }, [diagram, mermaid]);
+  let element;
+  const insertSvg = (svg) => {
+    element = document.querySelector("#svgContainer");
+    element.innerHTML = svg;
+  };
 
-    let svgContainer = Constants.SvgContainerId;
+  let diagram = diagrams.find(d => d.type === type);
 
-    return (
-        <div id={svgContainer}></div>
-    );
+  useEffect(() => {
+    mermaid.initialize(config);
+    mermaid.render("graph-div", diagram.code.join('\n'), insertSvg);
+  }, [config, insertSvg]);
+
+  let svgContainer = Constants.SvgContainerId;
+
+  return (
+    <div id={svgContainer}></div>
+  );
 }
 
 export default PreviewStatic;

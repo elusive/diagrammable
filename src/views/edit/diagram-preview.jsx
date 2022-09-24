@@ -4,41 +4,38 @@ import Constants from '../../constants';
 
 
 const DiagramPreview = (props) => {
-    const {
-        code,
-        config,
-    } = props;
+  const {
+    code,
+    config,
+  } = props;
 
-    let element;
+  let element;
 
-    const insertSvg = (svg) => {
-        element = document.querySelector("#svgContainer");
-        element.innerHTML = svg;
-    };
+  const insertSvg = (svg) => {
+    element = document.querySelector("#svgContainer");
+    element.innerHTML = svg;
+  };
 
-    useEffect(() => {
-        try {
-            let _code = code;
-            _code = _code.replace(/</g, '&lt;');
-            _code = _code.replace(/>/g, '&gt;');
-            mermaid.initialize(config);
-            mermaid.render("graph-div", code, insertSvg);
-        }
-        catch(e) {
-            console.log(`View fail: ${e.message}`);
-        }
-    }, [code, mermaid]);
+  useEffect(() => {
+    try {
+      mermaid.initialize(config);
+      mermaid.render("graph-div", code, insertSvg);
+    }
+    catch (e) {
+      console.log(`View fail: ${e.message}`);
+    }
+  }, [code, config, insertSvg]);
 
 
-     let svgContainer = Constants.SvgContainerId;
+  let svgContainer = Constants.SvgContainerId;
 
 
-    // return html elements for UI
-    return (
-        <div className="preview-container">
-          <div id={svgContainer}></div>
-        </div>
-    );
+  // return html elements for UI
+  return (
+    <div className="preview-container">
+      <div id={svgContainer}></div>
+    </div>
+  );
 }
 
 export default DiagramPreview;
