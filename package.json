@@ -38,8 +38,7 @@
   },
   "build": {
     "appId": "com.electron.diagrammable",
-    "productName": "diagrammable",
-    "copyright": "Copyright © 2019-2023 John Gilliland",
+    "productName": "Diagrammable",
     "linux": {
       "target": "AppImage"
     },

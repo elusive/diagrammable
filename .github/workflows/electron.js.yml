@@ -14,8 +14,8 @@ jobs:
     environment: production
     runs-on: windows-2022
     env:
-      WIN_CSC_LINK: ${{ secrets.WINDOWS_PFX }}
-      WIN_CSC_PASSWORD: ${{ secrets.WINDOWS_PFX_PASSWORD }}
+      CSC_LINK: codesign.pfx
+      CSC_KEY_PASSWORD: password
     steps:
     - name: Checkout source
       uses: actions/checkout@v2
