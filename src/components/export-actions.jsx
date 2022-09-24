@@ -58,15 +58,6 @@ const ExportsContainer = (props) => {
     const box = svg.getBoundingClientRect();
     canvas.width = box.width;
     canvas.height = box.height;
-    /* if (selectedImageSizer === 'width') {
-         const ratio = box.height / box.width;
-         canvas.width = enteredImageSize;
-         canvas.height = enteredImageSize * ratio;
-     } else if (selectedImageSizer === 'height') {
-         const ratio = box.height / box.width;
-         canvas.width = enteredImageSize * ratio;
-         canvas.height = enteredImageSize;
-     }*/
 
     const graphicsContext = canvas.getContext('2d');
     graphicsContext.fillStyle = 'transparent';
