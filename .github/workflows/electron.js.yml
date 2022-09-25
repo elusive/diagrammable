@@ -33,23 +33,3 @@ jobs:
       env:
          CI: false
 
-  build-on-linux:
-    environment: production
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout source
-      uses: actions/checkout@v2
-
-    - name: Setup Node/Yarn
-      uses: actions/setup-node@v2
-      with:
-        node-version: 16.x
-        cache: 'npm'
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Build electron package
-      run: npm run electron:package:linux
-      env:
-        CI: false
