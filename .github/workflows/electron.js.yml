@@ -33,3 +33,8 @@ jobs:
       env:
          CI: false
 
+    - uses: actions/upload-artifact@v3
+      with:
+        name: diagrammable-installer
+        path: 'dist/diagrammable*.msi'
+  
