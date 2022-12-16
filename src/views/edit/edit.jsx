@@ -23,7 +23,7 @@ const Edit = () => {
             <EditingCard>
                 <EditCardTitle>Edit Diagram</EditCardTitle>
                 <DiagramEditor
-                    language="mermaid"  // TODO: change to mermaid
+                    language="mermaid" 
                     value={code.join('\n')}
                     type={type}
                     displayName={"display name"}
@@ -36,6 +36,7 @@ const Edit = () => {
                     code={code} 
                     config={config} 
                     type={type} 
+
                     displayName={"display name"} />
                 <DiagramPreview 
                     code={code.join('\n')} 
