@@ -56,16 +56,14 @@
 }
 
 @font-face {
-    font-family: 'Fira Mono';
+    font-family: 'Consolas';
     font-style: normal;
     font-weight: 400;
-    src: local('Fira Mono Regular '), local('Fira Mono-Regular'),
-        url('https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap');
 }
 
 body {
     --font: 'Roboto', sans-serif;
-    --font-mono: 'Fira Mono', monospace;
+    --font-mono: 'Consolas', monospace;
 }
 
 /*	typography variables */
