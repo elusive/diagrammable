@@ -15,9 +15,11 @@ export const DiagramType = Object.freeze({
     PIE_CHART: enumValue('pie_chart'),
 });
 
+// context actions supported
 export const ActionType = Object.freeze({
     UPDATE_CODE: enumValue('UPDATE_CODE'),
     UPDATE_CONFIG: enumValue('UPDATE_CONFIG'),
     LOAD_EXAMPLE: enumValue('LOAD_EXAMPLE'),
+    UPDATE_SELECTED: enumValue('UPDATE_SELECTED'),
 });
 

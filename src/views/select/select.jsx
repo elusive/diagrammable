@@ -1,4 +1,7 @@
-import React from 'react'
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { GlobalContext } from '../../context/GlobalContext';
+import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -7,7 +10,7 @@ import Tab from '@mui/material/Tab';
 import SwipeableViews from 'react-swipeable-views';
 import { useTheme } from '@mui/material/styles';
 import { SelectionTabPanel } from './selection-tab-panel';
-import { CodeContainer } from './styled';
+import { CodeContainer, SelectionButton } from './styled';
 import PreviewStatic from '../../components/preview-static';
 
 const diagrams = require('../../context/diagrams.json');
@@ -20,17 +23,24 @@ function a11yProps(index) {
 }
 
 const Select = () => {
-
+    const { code, setCode } = React.useContext(GlobalContext);
     const [value, setValue] = React.useState(0);
-
     const theme = useTheme();
+    const history = useHistory();
 
     const handleTabChanged = (_, newValue) => {
         setValue(newValue);
     };
     const handleIndexChanged = (newIndex) => {
+        if (undefined === newIndex) return;
         setValue(newIndex);
         console.log(newIndex);
+    }
+    const handleUseSelectedClick = () => {
+        var selected = value;
+        if (undefined === selected) return;
+        setCode(diagrams[selected].code);
+        history.push(`edit`);                
     }
 
     return (
@@ -39,6 +49,7 @@ const Select = () => {
                 <Typography variant="h5" component="div" gutterBottom>
                     Select the type of Diagram to Build:
                 </Typography>
+                <Button variant="contained" color="secondary" onClick={handleUseSelectedClick}>Use Selected</Button>
                 <Tabs value={value} onChange={handleTabChanged}
                     textColor="secondary" indicatorColor="secondary"
                     aria-label="Diagram Type Selection">
@@ -48,8 +59,7 @@ const Select = () => {
                 <SwipeableViews
                     axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
                     index={value}
-                    onChangeIndex={handleIndexChanged}
-                >
+                    onChangeIndex={handleIndexChanged}>
                     { diagrams.map((diagram, index) => (
                         <SelectionTabPanel
                             key={index} index={index}

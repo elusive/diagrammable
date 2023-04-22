@@ -17,6 +17,7 @@ const initialState = {
          }
     },
     open: true,
+    selected: undefined,
     type: DiagramType.FLOW_CHART,
 }
 
@@ -30,7 +31,8 @@ export const GlobalContextProvider = ({ children }) => {
     useEffect(() => {
         localStorage.setItem("code", JSON.stringify(state.code));
         localStorage.setItem("config", JSON.stringify(state.config));
-        localStorage.setItem("type", state.DiagramType);
+        localStorage.setItem("type", state.type);
+        localStorage.setItem("selected", state.selected) ;
     });
 
     const setCode = (newCode) => {
@@ -54,6 +56,13 @@ export const GlobalContextProvider = ({ children }) => {
        });
     };
 
+    const setSelected = (newSelectedIndex) => {
+        dispatch({
+            type: ActionType.UPDATE_SELECTED,
+            payload: newSelectedIndex
+        });
+    };
+
     const loadExample = (newType) => {
        dispatch({
            type: ActionType.LOAD_EXAMPLE,
@@ -68,10 +77,12 @@ export const GlobalContextProvider = ({ children }) => {
                 code: state.code,
                 config: state.config,
                 type: state.type,
+                selected: state.selected,
                 setCode,
                 setConfig,
                 setType,
                 loadExample,
+                setSelected,
             }}>
             {children}
         </GlobalContext.Provider>  

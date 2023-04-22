@@ -1,6 +1,7 @@
 
-import styled from 'styled-components';
-import {motion} from 'framer-motion';
+import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+import { motion } from 'framer-motion';
 
 export const SelectionCard = styled(motion.div)`
     border: 1px solid var(--second);
@@ -20,3 +21,4 @@ export const CodeContainer = styled(motion.pre)`
     margin: 28px;
     float:left;
 `;
+
