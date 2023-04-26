@@ -40,3 +40,51 @@ export const PreviewControlsDirectionals = styled(motion.div)`
     font-size: 20pt;
     padding: 0;
 `
+
+export const PreviewControlsGrid = styled(motion.div)`
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.2em;
+
+    button {
+        padding: 5px 7px;
+    }
+
+    .zoom-in {
+        grid-column: 3;
+        grid-row: 1;
+    }
+
+    .zoom-out {
+        grid-column: 3;
+        grid-row: 3;
+    }
+
+    .reset {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .up {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .down {
+        grid-column: 2;
+        grid-row: 3;
+    }
+
+    .left {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .right {
+        grid-column: 3;
+        grid-row: 2;
+    }
+
+
+`
