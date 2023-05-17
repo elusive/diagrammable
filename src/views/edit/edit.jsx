@@ -36,14 +36,12 @@ const Edit = () => {
                     code={code} 
                     config={config} 
                     type={type} 
-
                     displayName={"display name"} />
                 <DiagramPreview 
                     code={code.join('\n')} 
                     type={type}
                     config={config}
-                    displayName={type.toString()}
-                />
+                    displayName={type.toString()} />
             </PreviewCard>
         </GridLayout>
         </React.Fragment>

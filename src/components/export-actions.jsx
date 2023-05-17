@@ -9,17 +9,8 @@ import CopyIcon from '@mui/icons-material/ContentCopy';
 import Constants from '../constants';
 import { GlobalContext } from '../context/GlobalContext';
 import { ExportCard } from './styled';
-import IconButton from '@mui/material/IconButton';
-import ZoomInIcon from '@mui/icons-material/ZoomIn';
-import ZoomOutIcon from '@mui/icons-material/ZoomOut';
-import KeyboardArrowUp from '@mui/icons-material/KeyboardArrowUp';
-import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import {
-  PreviewControlsDirectionals,
-  PreviewControlsDiv
-} from './styled';
+import { ChevronLeftIcon, ChevronRightIcon, ChevronDownIcon, ChevronUpIcon } from '@primer/octicons-react';
+import { ZoomInIcon, ZoomOutIcon, SyncIcon } from '@primer/octicons-react';
 
 const ExportsContainer = (props) => {
   let { displayName } = props;
@@ -187,34 +178,15 @@ const ExportsContainer = (props) => {
               Save Image&nbsp;<SaveAsIcon />
             </Button>
           </div>
-          <PreviewControlsDiv>
-            <IconButton style={{ padding: 0 }} color="primary" aria-label="Zoom In" component="span"
-              onClick={() => zoom("in")}>
-              <ZoomInIcon sx={{ fontSize: 30 }} />
-            </IconButton>
-            <IconButton style={{ padding: 0 }} ccolor="primary" aria-label="Zoom Out" component="span"
-              onClick={() => zoom("out")}>
-              <ZoomOutIcon sx={{ fontSize: 30 }} />
-            </IconButton>
-            <IconButton style={{ padding: 0 }} ccolor="primary" aria-label="Pan Left" component="span"
-              onClick={() => pan("left")}>
-              <KeyboardArrowLeft />
-            </IconButton>
-            <PreviewControlsDirectionals>
-              <IconButton style={{ padding: 0, margin: "-4px" }} ccolor="primary" aria-label="Pan Up" component="span"
-                onClick={() => pan("up")}>
-                <KeyboardArrowUp />
-              </IconButton>
-              <IconButton style={{ padding: 0, margin: "-4px" }} ccolor="primary" aria-label="Pan Down" component="span"
-                onClick={() => pan("down")}>
-                <KeyboardArrowDown sx={{ fontSize: 24 }} />
-              </IconButton>
-            </PreviewControlsDirectionals>
-            <IconButton sx={{ padding: 0 }} ccolor="primary" aria-label="Pan Right" component="span"
-              onClick={() => pan("right")}>
-              <KeyboardArrowRight />
-            </IconButton>
-          </PreviewControlsDiv>
+          <div className="control-panel">
+            <button className="btn button zoom-in" aria-label="Zoom In" onClick={() => zoom("in")}><ZoomInIcon /></button>
+            <button className="btn button zoom-out" aria-label="Zoom Out" onClick={() => zoom("out")}><ZoomOutIcon /></button>
+            <button className="btn button reset" aria-label="Reset" onClick={() => zoom("reset")}><SyncIcon /></button>
+            <button className="btn button pan-up" aria-label="Pan Up" onClick={() => pan("up")}><ChevronUpIcon /></button>
+            <button className="btn button pan-down" aria-label="Pan Down" onClick={() => pan("down")}><ChevronDownIcon /></button>
+            <button className="btn button pan-left" aria-label="Pan Left" onClick={() => pan("left")}><ChevronLeftIcon /></button>
+            <button className="btn button pan-right" aria-label="Pan Right" onClick={() => pan("right")}><ChevronRightIcon /></button>
+          </div>
 
         </ExportCard>
       </div>
