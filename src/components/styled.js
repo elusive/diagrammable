@@ -19,4 +19,3 @@ export const ExportCard = styled.div`
     background: transparent;
     color: var(--prime);
 `;
-
