@@ -196,7 +196,11 @@ pre code {
     min-height: 70vh;
     padding: 0.5rem;
     align-items: center;
-    overflow: hidden;
+}
+
+.preview-container > svg {
+    position: sticky;
+    z-index: 1;
 }
 
 .btn {
@@ -206,7 +210,7 @@ pre code {
     box-shadow: var(--color-btn-shadow), var(--color-btn-inset-shadow);
     transition: 0.2s cubic-bezier(0.3, 0, 0.5, 1);
     transition-property: color, background-color, border-color;
-        position: relative;
+    position: relative;
     display: inline-block;
     padding: 5px 16px;
     font-size: 14px;
@@ -227,53 +231,67 @@ pre code {
     text-decoration: none;
 }
 
+.export-buttons {
+    float: right;
+    margin-right: 0.5em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.2em;
+    position: sticky;
+    z-index: 2;
+}
+
+.copy { grid-column: 1; grid-row: 1; }
+.save { grid-column: 2; grid-row: 1; }
+
 .control-panel {
-    position: absolute;
-    bottom: 4em;
-    right: 2em;
+    float: left;
+    margin-left: 0.5em;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0.2em;
- }
+    position: sticky;
+    z-index: 2;
+}
 
-  .button {
+.button {
     padding: 5px 7px;
-  }
+}
 
-  .zoom-in {
-    grid-column: 3;
+.zoom-in {
+    grid-column: 1;
     grid-row: 1;
-  }
+}
 
-  .zoom-out {
-    grid-column: 3;
+.zoom-out {
+    grid-column: 1;
     grid-row: 3;
-  }
+}
 
-  .reset {
+.reset {
     grid-column: 2;
     grid-row: 2;
-  }
+}
 
-  .up {
+.up {
     grid-column: 2;
     grid-row: 1;
-  }
+}
 
-  .down {
+.down {
     grid-column: 2;
     grid-row: 3;
-  }
+}
 
-  .left {
+.left {
     grid-column: 1;
     grid-row: 2;
-  }
+}
 
-  .right {
+.right {
     grid-column: 3;
     grid-row: 2;
-  }
+}
 
 .editor-container.collapsed {
     flex-grow: 0;

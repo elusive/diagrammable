@@ -3,12 +3,11 @@ import { toBase64 } from 'js-base64';
 import moment from 'moment';
 
 import Button from '@mui/material/Button';
-import SaveAsIcon from '@mui/icons-material/Save';
-import CopyIcon from '@mui/icons-material/ContentCopy';
 
 import Constants from '../constants';
 import { GlobalContext } from '../context/GlobalContext';
 import { ExportCard } from './styled';
+import { CopyIcon, ImageIcon } from '@primer/octicons-react';
 import { ChevronLeftIcon, ChevronRightIcon, ChevronDownIcon, ChevronUpIcon } from '@primer/octicons-react';
 import { ZoomInIcon, ZoomOutIcon, SyncIcon } from '@primer/octicons-react';
 
@@ -112,82 +111,57 @@ const ExportsContainer = (props) => {
 
   /*  ZOOM & PAN Functions
    */
-  const zoom = (direction) => {
-    const svg = document.getElementById(Constants.SvgId);
-    const { scale, x, y } = getTransformParameters(svg);
-    let dScale = 0.1;
-    if (direction === "out") dScale *= -1;
-    if (scale === 0.1 && direction === "out") dScale = 0;
-    svg.style.transform = getTransformString(scale + dScale, x, y);
-  };
+    const ZOOM_MIN = 0.5
+    const ZOOM_MAX = 8
 
-  const getTransformParameters = (element) => {
-    const transform = element.style.transform;
-    let scale = 1,
-      x = 0,
-      y = 0;
-    if (transform.includes("scale"))
-      scale = parseFloat(transform.slice(transform.indexOf("scale") + 6));
-    if (transform.includes("translateX"))
-      x = parseInt(transform.slice(transform.indexOf("translateX") + 11));
-    if (transform.includes("translateY"))
-      y = parseInt(transform.slice(transform.indexOf("translateY") + 11));
-    return { scale, x, y };
-  };
+    let zoomLevel = 1
+    const translate = {x: 0, y: 0}
 
-  const getTransformString = (scale, x, y) => "scale(" + scale +
-    ") translateX(" + x + "%) translateY(" + y + "%)";
-
-  const pan = (direction) => {
-    const svg = document.getElementById(Constants.SvgId);
-    const { scale, x, y } = getTransformParameters(svg);
-    let dx = 0,
-      dy = 0;
-    switch (direction) {
-      case "left":
-        dx = -3;
-        break;
-      case "right":
-        dx = 3;
-        break;
-      case "up":
-        dy = -3;
-        break;
-      case "down":
-        dy = 3;
-        break;
-      default:
-        break;
+    const reset = () => {
+      zoomLevel = 1
+      translate.x = 0
+      translate.y = 0
+      transformSvg(zoomLevel, translate.x, translate.y)
     }
-    svg.style.transform = getTransformString(scale, x + dx, y + dy);
-  };
+
+    const doMove = (vertical, horizonal) => {
+      translate.y += vertical
+      translate.x += horizonal
+      transformSvg(zoomLevel, translate.x, translate.y)
+    }
+
+    const doZoom = (value) => {
+      zoomLevel += value
+      zoomLevel = Math.min(Math.max(ZOOM_MIN, zoomLevel), ZOOM_MAX)
+      transformSvg(zoomLevel, translate.x, translate.y)
+    }
+
+    const transformSvg = (zoom, x, y) => {
+        const svg = document.getElementById(Constants.SvgId);
+        svg.style.transform = `translate(${x}px, ${y}px) scale(${zoom})`
+    }
 
   return (
     <React.Fragment>
       <div id="exportActions">
         <ExportCard>
-          <div id="export-buttons">
-            {
-              isClipboardSupported() &&
-              <Button id="copy-png-button"
-                onClick={(e) => onCopyToClipboardClick(e)}>
-                Copy Code&nbsp; <CopyIcon />
-              </Button>
-            }
-            <Button id="export-png-button" onClick={(e) => onDownloadPngClick(e)}>
-              Save Image&nbsp;<SaveAsIcon />
-            </Button>
-          </div>
           <div className="control-panel">
-            <button className="btn button zoom-in" aria-label="Zoom In" onClick={() => zoom("in")}><ZoomInIcon /></button>
-            <button className="btn button zoom-out" aria-label="Zoom Out" onClick={() => zoom("out")}><ZoomOutIcon /></button>
-            <button className="btn button reset" aria-label="Reset" onClick={() => zoom("reset")}><SyncIcon /></button>
-            <button className="btn button pan-up" aria-label="Pan Up" onClick={() => pan("up")}><ChevronUpIcon /></button>
-            <button className="btn button pan-down" aria-label="Pan Down" onClick={() => pan("down")}><ChevronDownIcon /></button>
-            <button className="btn button pan-left" aria-label="Pan Left" onClick={() => pan("left")}><ChevronLeftIcon /></button>
-            <button className="btn button pan-right" aria-label="Pan Right" onClick={() => pan("right")}><ChevronRightIcon /></button>
+            <button className="btn button zoom-in" aria-label="Zoom In" onClick={() => doZoom(0.1)}><ZoomInIcon /></button>
+            <button className="btn button zoom-out" aria-label="Zoom Out" onClick={() => doZoom(-0.1)}><ZoomOutIcon /></button>
+            <button className="btn button reset" aria-label="Reset" onClick={reset}><SyncIcon /></button>
+            <button className="btn button up" aria-label="Pan Up" onClick={() => doMove(-10,0)}><ChevronUpIcon /></button>
+            <button className="btn button down" aria-label="Pan Down" onClick={() => doMove(10,0)}><ChevronDownIcon /></button>
+            <button className="btn button left" aria-label="Pan Left" onClick={() => doMove(0,-10)}><ChevronLeftIcon /></button>
+            <button className="btn button right" aria-label="Pan Right" onClick={() => doMove(0,10)}><ChevronRightIcon /></button>
           </div>
 
+          <div className="export-buttons">
+            {
+              isClipboardSupported() &&
+              <button className="btn button copy" onClick={(e) => onCopyToClipboardClick(e)}><CopyIcon /></button>
+            }
+            <button className="btn button save" id="export-png-button" onClick={(e) => onDownloadPngClick(e)}><ImageIcon /></button>
+          </div>
         </ExportCard>
       </div>
     </React.Fragment>
