@@ -9,12 +9,9 @@ export const CardTitle = styled.h4`
 `;
 
 export const ExportCard = styled.div`
-    display: flex;
-    flex-direction:row-reverse;
     padding: 0;
     margin: 0;
     width: auto;
-    align-content: flex-end;
     z-index:99;
     background: transparent;
     color: var(--prime);

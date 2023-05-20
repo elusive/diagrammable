@@ -1,6 +1,6 @@
 {
   "name": "diagrammable",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "author": "Elusive Development",
   "description": "User interface for creation of diagrams using MermaidJs.",
   "repository": {
