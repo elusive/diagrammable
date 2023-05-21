@@ -4,13 +4,14 @@ name: Build Release
 
 
 on:
+  
+  pull_request:
+    branches:    
+      - 'releases/**'
+      - '!releases/**-alpha'
   push:
     tags: 
       - 'v*'
-  pull_request:
-    branches: 
-      - 'release/*'
-
 
 jobs:
   upload-release:
