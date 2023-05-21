@@ -41,7 +41,7 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./uploads/*.AppImage
-        asset_name: *.AppImage
+        
 
     - name: upload windows
       id: upload-windows
@@ -51,7 +51,6 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./uploads/*.msi
-        asset_name: *.msi 
         asset_content_type: application/x-ms-installer
 
 
