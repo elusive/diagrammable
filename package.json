@@ -1,6 +1,6 @@
 {
   "name": "diagrammable",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "author": "Elusive Development",
   "description": "User interface for creation of diagrams using MermaidJs.",
   "repository": {
@@ -40,16 +40,21 @@
     "appId": "com.electron.diagrammable",
     "productName": "Diagrammable",
     "linux": {
+      "category": "Utility",
       "target": "AppImage"
+    },
+    "appImage": {
+      "artifactName": "${name}-${version}.${ext}"
     },
     "win": {
       "target": [
         "msi"
       ]
     },
-    "nsis": {
+    "msi": {
       "oneClick": "true",
-      "perMachine": "false"
+      "perMachine": "false",
+      "artifactName": "${name}-${version}.${ext}"
     },
     "files": [
       "build/**/*",
