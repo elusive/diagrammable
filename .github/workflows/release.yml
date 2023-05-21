@@ -7,8 +7,8 @@ on:
   
   pull_request:
     branches:    
-      - 'releases/**'
-      - '!releases/**-alpha'
+      - 'release/**'
+      - '!release/**-alpha'
   push:
     tags: 
       - 'v*'
