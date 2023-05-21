@@ -40,7 +40,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./uploads/*.AppImage
+        asset_path: ./uploads/diagrammable.{{github_ref}}.appimage
+        asset_name: diagrammable.{{github_ref}}.appimage
         
 
     - name: upload windows
@@ -50,7 +51,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./uploads/*.msi
+        asset_path: ./uploads/diagrammable.{{github_ref}}.msi
+        asset_name: diagrammable.{{github.ref}}.msi
         asset_content_type: application/x-ms-installer
 
 
@@ -88,7 +90,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: uploads
-        path: linux.zip        
+        path: diagrammable.{github.ref}.appimage     
 
 
 
