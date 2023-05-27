@@ -4,9 +4,15 @@ name: Build Release
 
 
 on:
+  
+  pull_request:
+    branches:    
+      - 'release/**'
+      - '!release/**-alpha'
   push:
     tags: 
       - 'v*'
+
   pull_request_target:
     branches: 
       - 'release/*'
