@@ -7,7 +7,7 @@ on:
   push:
     tags: 
       - 'v*'
-  pull_request:
+  pull_request_target:
     branches: 
       - 'release/*'
 
