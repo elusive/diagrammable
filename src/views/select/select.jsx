@@ -10,7 +10,7 @@ import Tab from '@mui/material/Tab';
 import SwipeableViews from 'react-swipeable-views';
 import { useTheme } from '@mui/material/styles';
 import { SelectionTabPanel } from './selection-tab-panel';
-import { CodeContainer, SelectionButton } from './styled';
+import { CodeContainer } from './styled';
 import PreviewStatic from '../../components/preview-static';
 
 const diagrams = require('../../context/diagrams.json');
@@ -23,7 +23,7 @@ function a11yProps(index) {
 }
 
 const Select = () => {
-    const { code, setCode } = React.useContext(GlobalContext);
+    const { setCode } = React.useContext(GlobalContext);
     const [value, setValue] = React.useState(0);
     const theme = useTheme();
     const history = useHistory();

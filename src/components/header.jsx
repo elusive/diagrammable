@@ -1,5 +1,3 @@
-
-import styled from 'styled-components';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -34,6 +32,7 @@ const Header = (props) => {
 
 export default Header;
 
+/*
 const Title = styled.h2`
     padding: 0px;
     color: var(--heading);
@@ -43,3 +42,4 @@ const SubTitle = styled.p`
     color: var(--prime);
     margin: 12px 6px;
 `;
+*/

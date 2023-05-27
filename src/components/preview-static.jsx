@@ -8,20 +8,17 @@ const diagrams = require('../context/diagrams.json');
 const PreviewStatic = (props) => {
     const { type } = props;
     const {config} = useContext(GlobalContext); 
-    
-    let element;
-    const insertSvg = (svg) => { 
-        element = document.querySelector("#svgContainer");
-        element.innerHTML = svg; 
-    };
-   
-
     let diagram = diagrams.find(d => d.type === type);
     
     useEffect(() => {
-            mermaid.initialize(config);
-            mermaid.render("graph-div", diagram.code.join('\n'), insertSvg);
-    }, [diagram, mermaid]);
+        let element;
+        const insertSvg = (svg) => { 
+            element = document.querySelector("#svgContainer");
+            element.innerHTML = svg; 
+        };
+        mermaid.initialize(config);
+        mermaid.render("graph-div", diagram.code.join('\n'), insertSvg);
+    }, [diagram, config]);
 
     let svgContainer = Constants.SvgContainerId;
 
