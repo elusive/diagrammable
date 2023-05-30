@@ -6,13 +6,12 @@ const Iframe = (props) => {
     const iframeId = "iframeContainer";
     const [h, setH] = useState(1000);
     const [w, setW] = useState(1000);
-    let iframeContainerElement;
 
     useEffect(() => {
-        iframeContainerElement = document.querySelector(`#${iframeId}`); 
+        let iframeContainerElement = document.querySelector(`#${iframeId}`); 
         setH(window.innerHeight);
         setW(iframeContainerElement.offsetWidth);
-    });
+    }, []);
 
 
 
