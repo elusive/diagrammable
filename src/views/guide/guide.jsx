@@ -1,9 +1,24 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 
-var Iframe = () => { 
+
+const Iframe = (props) => { 
+    const iframeId = "iframeContainer";
+    const [h, setH] = useState(1000);
+    const [w, setW] = useState(1000);
+    let iframeContainerElement;
+
+    useEffect(() => {
+        iframeContainerElement = document.querySelector(`#${iframeId}`); 
+        setH(window.innerHeight);
+        setW(iframeContainerElement.offsetWidth);
+    });
+
+
+
     return(         
-      <div>          
-        <iframe title="{this.props.title}" src="{this.props.src}" height={this.props.height} width={this.props.width}/>         
+      <div id={iframeId}>          
+        <iframe title={props.title} src={props.url} height={h} width={w}/>         
       </div>
     )
 }
@@ -11,8 +26,8 @@ var Iframe = () => {
 
 const Guide = () => {
    return (
-        <div id="guide">
-            <Iframe title="guideFrame" src="https://mermaid.js.org/intro/n00b-syntaxReference.html" height="1000" width="1000" /> 
+        <div id="guideContainer">
+            <Iframe title="guideFrame" url="https://mermaid.js.org/intro/n00b-syntaxReference.html" height="1000" width="1000" /> 
         </div>
    )
 }
