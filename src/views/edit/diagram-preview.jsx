@@ -14,13 +14,13 @@ const DiagramPreview = (props) => {
     useEffect(() => {
         let element;
         const insertSvg = (svg) => {
-            element = document.querySelector("#svgContainer");
+            element = document.querySelector(`#${Constants.SvgContainerId}`);
             element.innerHTML = svg;
         };
 
         try {
             mermaid.initialize(config);
-            mermaid.render("graph-div", code, insertSvg);
+            mermaid.render(Constants.SvgId, code, insertSvg);
         }
         catch(e) {
             console.log(`View fail: ${e.message}`);
