@@ -12,7 +12,7 @@ const DiagramPreview = (props) => {
     let element;
 
     const insertSvg = (svg) => {
-        element = document.querySelector("#svgContainer");
+        element = document.querySelector(`#${Constants.SvgContainerId}`);
         element.innerHTML = svg;
     };
 
@@ -22,7 +22,7 @@ const DiagramPreview = (props) => {
             _code = _code.replace(/</g, '&lt;');
             _code = _code.replace(/>/g, '&gt;');
             mermaid.initialize(config);
-            mermaid.render("graph-div", code, insertSvg);
+            mermaid.render(Constants.SvgId, code, insertSvg);
         }
         catch(e) {
             console.log(`View fail: ${e.message}`);

@@ -11,7 +11,7 @@ const PreviewStatic = (props) => {
     
     let element;
     const insertSvg = (svg) => { 
-        element = document.querySelector("#svgContainer");
+        element = document.querySelector(`#${Constants.SvgContainerId}`);
         element.innerHTML = svg; 
     };
    
@@ -20,7 +20,7 @@ const PreviewStatic = (props) => {
     
     useEffect(() => {
             mermaid.initialize(config);
-            mermaid.render("graph-div", diagram.code.join('\n'), insertSvg);
+            mermaid.render(Constants.SvgId, diagram.code.join('\n'), insertSvg);
     }, [diagram, mermaid]);
 
     let svgContainer = Constants.SvgContainerId;
