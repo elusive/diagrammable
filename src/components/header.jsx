@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import HelpIcon from '@mui/icons-material/Help';
 import SideMenu from '../views/app/SideMenu';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // header component for top of each page
 const Header = (props) => {
@@ -20,9 +21,9 @@ const Header = (props) => {
                     </Typography>
                         <Typography component="span" sx={{ flexGrow: 1, ml: 1, textAlign: 'right' }}>
                             declarative diagrams using MermaidJs</Typography>
-                    <Button color="inherit" sx={{ textAlign: 'right'}}>
-                        <HelpIcon />
-                    </Button>
+                        <Button component={Link} to="/guide" color="inherit" sx={{ textAlign: 'right'}}>
+                            <HelpIcon />
+                        </Button>
                     </Toolbar>
                 </AppBar>
             </Box>
