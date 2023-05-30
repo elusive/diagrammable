@@ -203,6 +203,10 @@ pre code {
     z-index: 1;
 }
 
+.preview-container > div {
+    min-width: 85vh;
+}
+
 .btn {
     color: var(--color-btn-text);
     background-color: var(--color-btn-bg);
