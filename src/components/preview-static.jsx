@@ -9,19 +9,16 @@ const PreviewStatic = (props) => {
     const { type } = props;
     const {config} = useContext(GlobalContext); 
     
-    let element;
-    const insertSvg = (svg) => { 
-        element = document.querySelector(`#${Constants.SvgContainerId}`);
-        element.innerHTML = svg; 
-    };
-   
-
     let diagram = diagrams.find(d => d.type === type);
     
     useEffect(() => {
-            mermaid.initialize(config);
-            mermaid.render(Constants.SvgId, diagram.code.join('\n'), insertSvg);
-    }, [diagram, mermaid]);
+        const insertSvg = (svg) => { 
+            let element = document.querySelector(`#${Constants.SvgContainerId}`);
+            element.innerHTML = svg; 
+        };
+        mermaid.initialize(config);
+        mermaid.render(Constants.SvgId, diagram.code.join('\n'), insertSvg);
+    }, [diagram, config]);
 
     let svgContainer = Constants.SvgContainerId;
 

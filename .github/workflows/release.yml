@@ -13,6 +13,11 @@ on:
     tags: 
       - 'v*'
 
+  pull_request_target:
+    branches: 
+      - 'release/*'
+
+
 jobs:
   upload-release:
 
