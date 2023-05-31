@@ -9,18 +9,16 @@ const DiagramPreview = (props) => {
         config,
     } = props;
 
-    let svgContainer = Constants.SvgContainerId;
+
 
     useEffect(() => {
-        let element;
         const insertSvg = (svg) => {
-            element = document.querySelector(`#${Constants.SvgContainerId}`);
+            let element = document.querySelector("#svgContainer");
             element.innerHTML = svg;
         };
-
         try {
             mermaid.initialize(config);
-            mermaid.render(Constants.SvgId, code, insertSvg);
+            mermaid.render("graph-div", code, insertSvg);
         }
         catch(e) {
             console.log(`View fail: ${e.message}`);
@@ -29,10 +27,11 @@ const DiagramPreview = (props) => {
 
 
 
+
     // return html elements for UI
     return (
         <div className="preview-container">
-          <div id={svgContainer}></div>
+          <div id={Constants.SvgContainerId}></div>
         </div>
     );
 }

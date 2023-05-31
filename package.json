@@ -82,7 +82,7 @@
     "electron-is-dev": "1.2.0",
     "framer-motion": "^2.9.4",
     "js-base64": "^3.7.2",
-    "mermaid": "^10.2.0",
+    "mermaid": "^8.13.10",
     "moment": "^2.29.1",
     "react": "17.0.2",
     "react-codemirror2-react-17": "1.0.0",
