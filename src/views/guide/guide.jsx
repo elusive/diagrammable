@@ -26,7 +26,7 @@ const Iframe = (props) => {
 const Guide = () => {
    return (
         <div id="guideContainer">
-            <Iframe title="guideFrame" url="https://mermaid.js.org/intro/n00b-syntaxReference.html" height="1000" width="1000" /> 
+            <Iframe title="guideFrame" url="https://mermaid.js.org/intro/" height="1000" width="1000" /> 
         </div>
    )
 }
