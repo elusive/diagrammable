@@ -12,6 +12,7 @@ import EditIcon from '@mui/icons-material/DesignServices';
 import GuideIcon from '@mui/icons-material/MenuBook';
 import SettingsIcon from '@mui/icons-material/Settings';
 import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -37,11 +38,14 @@ function ListItemLink(props) {
   );
 }
 
+
 ListItemLink.propTypes = {
   icon: PropTypes.element,
   primary: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
 };
+
 
 
 export default function SideMenu(props) {
@@ -61,14 +65,18 @@ export default function SideMenu(props) {
   
     setState({ ...state, [anchor]: open });
   };
+
+  function closeApp() {
+    console.log('closing app');
+    window.close();
+  }
   
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
       role="presentation"
       onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
-    >
+      onKeyDown={toggleDrawer(false)}>
       <List>
         <ListItemLink to="/select" primary="Chart Selector" icon={<SelectIcon />} />
         <ListItemLink to="/edit" primary="Editor" icon={<EditIcon />} />
@@ -77,6 +85,10 @@ export default function SideMenu(props) {
       <Divider />
       <List>
         <ListItemLink to="/settings" primary="Preferences" icon={<SettingsIcon />} />
+      </List>
+      <Divider />
+      <List className="close-menu-item">
+        <ListItemLink onClick={() => closeApp()} primary="Quit" icon={<CloseIcon />} />
       </List>
     </Box>
   );
