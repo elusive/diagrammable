@@ -37,8 +37,7 @@ export const EditCardDisplayName = styled.h5`
 `;
 
 export const EditingCard = styled(motion.div)`
-    flex: auto;
-    max-width: 48vw;
+    flex: 0 0 200px;
     height: auto;
     min-width: 550px;
     min-height: 85vh;
@@ -68,12 +67,11 @@ export const PreviewCardTitle = styled.h4`
 `;
 
 export const PreviewCard = styled(motion.div)`
-    flex:auto;
+    flex: 3;
     padding: 0;
     margin: 20px;
-    max-width: 48vw;
     min-height: 85vh;
-    min-width: 550px;
+    min-width: 250px;
     overflow: hidden;
     background: var(--back-edit);
     box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);  

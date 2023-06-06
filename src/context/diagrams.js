@@ -1,3 +1,4 @@
+const diagrams =
 [
   {
     "id": 101,
@@ -123,4 +124,6 @@
             "Go downstairs: 5: Me"
       ]
   }
-]
+];
+
+export default diagrams;

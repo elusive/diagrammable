@@ -82,10 +82,10 @@ body {
 
 /*	typography variables */
 .typo-default {
-    --code-fs: 1.1rem;
-    --h6: 1.3rem;
-    --h5: 1.4rem;
-    --h4: 1.8rem; /* default font-size */
+    --code-fs: 1.0rem;
+    --h6: 1.0rem;
+    --h5: 1.3rem;
+    --h4: 1.6rem; /* default font-size */
     --h3: 2.6rem;
     --h2: 3rem;
     --h1: 3.2rem;
@@ -192,10 +192,11 @@ pre code {
     flex-grow: 1;
     flex-basis: 0;
     display: flex;
+    flex-wrap: nowrap;
     flex-direction: column;
-    min-height: 70vh;
     padding: 0.5rem;
-    align-items: center;
+    align-items: start;
+    justify-content: start;
 }
 
 .preview-container > svg {
@@ -203,9 +204,7 @@ pre code {
     z-index: 1;
 }
 
-.preview-container > div {
-    min-width: 85vh;
-}
+
 
 .btn {
     color: var(--color-btn-text);

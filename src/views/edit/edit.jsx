@@ -19,7 +19,7 @@ const Edit = () => {
     }
     return (
         <React.Fragment>
-        <GridLayout className="grid-container" colums="1fr 1fr" gap={8}>
+        <GridLayout className="grid-container" colums="1fr 2fr" gap={6}>
             <EditingCard>
                 <EditCardTitle>Edit Diagram</EditCardTitle>
                 <DiagramEditor

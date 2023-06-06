@@ -13,7 +13,7 @@ import { SelectionTabPanel } from './selection-tab-panel';
 import { CodeContainer } from './styled';
 import PreviewStatic from '../../components/preview-static';
 
-const diagrams = require('../../context/diagrams.json');
+import diagrams from '../../context/diagrams.js';
 
 function a11yProps(index) {
     return {

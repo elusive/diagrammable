@@ -4,16 +4,16 @@ import Constants from '../../constants';
 
 
 const DiagramPreview = (props) => {
+
     const {
         code,
         config,
     } = props;
 
 
-
     useEffect(() => {
         const insertSvg = (svg) => {
-            let element = document.querySelector("#svgContainer");
+            let element = document.querySelector("#preview-container");
             element.innerHTML = svg;
         };
         try {
@@ -30,11 +30,12 @@ const DiagramPreview = (props) => {
 
     // return html elements for UI
     return (
-        <div className="preview-container">
-          <div id={Constants.SvgContainerId}></div>
+        <div id="preview-container" className="preview-container">
         </div>
     );
 }
+
+
 
 export default DiagramPreview;
 

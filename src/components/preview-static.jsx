@@ -3,7 +3,7 @@ import mermaid from 'mermaid';
 import { GlobalContext } from '../context/GlobalContext';
 import Constants from '../constants';
 
-const diagrams = require('../context/diagrams.json');
+import diagrams from '../context/diagrams.js';
 
 const PreviewStatic = (props) => {
     const { type } = props;

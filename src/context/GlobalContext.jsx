@@ -2,11 +2,12 @@ import React, { createContext, useEffect, useReducer } from 'react';
 import { AppReducer } from './AppReducer';
 import { DiagramType, ActionType} from './enumerations';
 
-const examples = require('./diagrams.json');
+// import example diagrams from json 
+import diagrams from './diagrams';
 
 // diagram types definition
 //
-const flowChartExampleCode = examples.find(d => d.type === 'flow_chart');
+const flowChartExampleCode = diagrams.find(d => d.type === 'flow_chart');
 const initialState = {
     code: flowChartExampleCode.code,
     config: {
@@ -70,7 +71,6 @@ export const GlobalContextProvider = ({ children }) => {
        }); 
     }
 
-    console.log(`state.code = ${state.code}`);
     return (
         <GlobalContext.Provider
             value={{
@@ -88,3 +88,4 @@ export const GlobalContextProvider = ({ children }) => {
         </GlobalContext.Provider>  
     );
 };
+
