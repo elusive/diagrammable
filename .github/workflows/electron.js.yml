@@ -29,7 +29,7 @@ jobs:
       run: npm install --force
 
     - name: Build electron package
-      run: npm run electron:package:win
+      run: npm run build:win
       env:
          CI: false
 
@@ -37,5 +37,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: windows-x64-installer
-        path: 'dist/diagrammable*.msi'
+        path: 'dist/diagrammable*.zip'
   
