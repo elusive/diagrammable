@@ -22,7 +22,9 @@ export default defineConfig({
                 '@renderer': resolve('src/renderer/src'),
             },
         },
-        plugins: [react()],
+        plugins: [
+            react(), 
+            svgr({ svgrOptions: { icon: true } })],
     },
     define: {
         global: {},
