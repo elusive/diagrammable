@@ -23,8 +23,7 @@ export default defineConfig({
             },
         },
         plugins: [
-            react(), 
-            svgr({ svgrOptions: { icon: true } })],
+            react() 
     },
     define: {
         global: {},
