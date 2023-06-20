@@ -37,5 +37,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: windows-x64-installer
-        path: 'dist/diagrammable*.zip'
+        path: 'dist/diagrammable*.exe'
   
