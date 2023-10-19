@@ -1,7 +1,7 @@
-
-![diagrammable logo](public/diagrammable_title.png)
+![diagrammable logo](src/renderer/src/assets/diagrammable_title.png)
 
 [![.github/workflows/electron.js.yml](https://github.com/elusive/diagrammable/actions/workflows/electron.js.yml/badge.svg?branch=main)](https://github.com/elusive/diagrammable/actions/workflows/electron.js.yml)
+
 # Getting Started with Diagrammable
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). The main 
@@ -56,34 +56,44 @@ If you wish to run from source or develop and contribute to the application you 
 
 4. Run the application in developer mode:
     ```
-    yarn install    # installs the dependencies from NPM
-    yarn start      # will run app in a browser window <https://localhost:3000>
+    npm install    # installs the dependencies from NPM
+    npm start      # will run app in a browser window <https://localhost:4000>
     # or
-    yarn dev        # will run the app in Electron (and open dev tools)
+    npm run dev        # will run the app in Electron (and open dev tools)
     ```
 
 5. Once there are tests to run you can execute the tests using this command:
-    `yarn test`
+    `npm run test`
 
 ## Electron Integration
 Electron is an instance of the Chromium browser and Nodejs running in a single process. This allows the use of a web app and a server backend (Node) together in the same application, locally on your desktop. The electron window hosts the web application instance and behaves just like a typical software window.
 
 The process of compiling and packaging the application has been somewhat simplified by the use of the NPM scripts (or Yarn). In order to produce the artifacts for installing the application and its Electron host, you can follow these steps:
 
-    ```
-    yarn build
-    yarn electron:package:[win|mac|linux]
-    ```
 
-## Learn More
+## Development
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Install
 
-You can learn more about MermaidJs from the [MermaidJs documentation](https://mermaid-js.github.io/mermaid/#/).
+```bash
+$ npm install
+```
 
-You can learn specifically how to create diagrams from the diagram reference available [**here**](https://mermaid-js.github.io/mermaid/#/./n00b-syntaxReference). 
+### Local Server
 
-#### Questions
-You can email me with questions about the code: me *at* johng *dot* info.
+```bash
+$ npm run dev
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Build
+
+```bash
+# For windows
+$ npm run build:win
+
+# For macOS
+$ npm run build:mac
+
+# For Linux
+$ npm run build:linux
+```
